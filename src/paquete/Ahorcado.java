@@ -5,6 +5,7 @@
 package paquete;
 
 import java.awt.List;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -12,6 +13,8 @@ import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.Stack;
+import javax.imageio.ImageIO;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -22,7 +25,9 @@ public class Ahorcado {
     private ArrayList<String> palabras;
     public String[] letras;  //arreglo de String que almacena el juego como tal, dicho arreglo se llenara de letra en letra hasta adivinar toda la palabra
     String[] palabraAux;  //arreglo de String para almacenar palabra a adivinar
-    public Stack<String[]> pila;  //uso de pila de Java, no use la clase Pila creada en clases debido a la limitacion de tama?o
+    private Stack<String[]> pila;  //uso de pila de Java, no use la clase Pila creada en clases debido a la limitacion de tama?o
+    public BufferedImage[] imagenes;
+    public int intentos;
 
 
 
@@ -31,19 +36,36 @@ public class Ahorcado {
     {
         palabras = new ArrayList<>();
         pila = new Stack<>();
-      
-     
+        //this.intentos = intentos;
+           
         //try y catch para leer archivo de texto que contiene 50 palabras, dichas palabras seran almacenadas en una arraylist
         try {  
             Scanner sc = new Scanner(new File("palabras.txt"));
             while (sc.hasNextLine()) {
-                palabras.add(sc.nextLine());
+                palabras.add(sc.nextLine());         
             }
+   
         } catch (Exception e) 
         {
             System.out.println(e.getMessage());
+        }          
+    }
+    
+    public Ahorcado(int intentos) {
+        palabras = new ArrayList<>();
+        pila = new Stack<>();
+        this.intentos = intentos;
+
+        //try y catch para leer archivo de texto que contiene 50 palabras, dichas palabras seran almacenadas en una arraylist
+        try {
+            Scanner sc = new Scanner(new File("palabras.txt"));
+            while (sc.hasNextLine()) {
+                palabras.add(sc.nextLine());
+            }
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
-            
     }
 
     public String PalabraRandom() {
@@ -62,6 +84,7 @@ public class Ahorcado {
         int indiceRandom = ran.nextInt(letras.length);
         letras[indiceRandom] = palabraAux[indiceRandom];
         pila.push(letras.clone());
+
         
         //System.out.println(this.StringArray(letras));
      
@@ -82,21 +105,28 @@ public class Ahorcado {
     {         
         if (!Completado()) 
         {
-            
+           boolean encontrado = false;
             for (int i = 0; i < letras.length; i++) {
                 if (palabraAux[i].equals(letra)) {
                     letras[i] = letra;
+                    encontrado = true;
                 }
+                
             }
             
+            if (!encontrado) {              
+                intentos--;
+                System.out.println("Intentos: "+ intentos);
+            }
              //Comprobar si ultimo elemento de la pila no coincide con el estado actual de letras, para que asi no haya elementos repetidos en la pila
             if (!Arrays.equals(letras.clone(), pila.peek())) {
                 pila.push(letras.clone());  //se usa el metodo clone para obtener el estado actual del juego
             }
+      
             
             System.out.println("Pila: " + PrintPila());
         }
-
+        //return false;
 
     }
     
