@@ -423,6 +423,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="X"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnXActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnZ">
       <Properties>
@@ -475,6 +478,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="W"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnWActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnAyuda">
       <Properties>
@@ -519,6 +525,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="ahorcado">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>

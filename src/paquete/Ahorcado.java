@@ -14,6 +14,7 @@ import java.util.Random;
 import java.util.Scanner;
 import java.util.Stack;
 import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -27,6 +28,7 @@ public class Ahorcado {
     String[] palabraAux;  //arreglo de String para almacenar palabra a adivinar
     private Stack<String[]> pila;  //uso de pila de Java, no use la clase Pila creada en clases debido a la limitacion de tama?o
     private int intentos;
+    private int fallos = 0;
 
 
 
@@ -116,7 +118,9 @@ public class Ahorcado {
                 }
 
                 if (!encontrado) {
-                    intentos--;
+                                      
+                    intentos--; 
+                    fallos++;
                     System.out.println("Intentos: " + intentos);
                 }
                 //Comprobar si ultimo elemento de la pila no coincide con el estado actual de letras, para que asi no haya elementos repetidos en la pila
@@ -127,10 +131,9 @@ public class Ahorcado {
                 System.out.println("Pila: " + PrintPila());
             }
 
-            
-            //            if (intentos == 0) {
-//                 JOptionPane.showMessageDialog(null, "Perdiste! La palabra era: "+this.Palabra(), "Fin",JOptionPane.ERROR_MESSAGE);
-//            }
+            else if (intentos == 0) {
+               JOptionPane.showMessageDialog(null, "Perdiste! La palabra era: "+StringArray(palabraAux), "Fin",JOptionPane.ERROR_MESSAGE);
+            }
         
         }
     }
@@ -142,10 +145,13 @@ public class Ahorcado {
             pila.pop();    //se retrocede una accion en el juego
             letras = pila.peek();    //el arreglo de letras pasa a tener el valor de la accion previa almacenada previamente en la pila
             System.out.println("Pila Retro: "+PrintPila());
+      
             return true;
         }
         else
             return false;
+        
+       
 
     }     
     
@@ -192,6 +198,11 @@ public class Ahorcado {
     public int getIntentos() {
         return intentos;
     }
+
+    public int getFallos() {
+        return fallos;
+    }
+    
     
     
        

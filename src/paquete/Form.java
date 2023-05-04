@@ -13,18 +13,19 @@ import java.util.Random;
 import javax.imageio.ImageIO;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author AORUS
  */
-public class Form extends javax.swing.JFrame {
+public final class Form extends javax.swing.JFrame {
 
     /**
      * Creates new form Form
      */
-    public Form() {
+    private Form() {
         initComponents();
         
         
@@ -41,12 +42,19 @@ public class Form extends javax.swing.JFrame {
 //            _7 = ImageIO.read(new File("sprites/7.png"));
             
             sprites = new BufferedImage[7];
+            sprites[0] = ImageIO.read(new File("sprites/1.png"));
+            sprites[1] = ImageIO.read(new File("sprites/2.png"));
+            sprites[2] = ImageIO.read(new File("sprites/3.png"));
+            sprites[3] = ImageIO.read(new File("sprites/4.png"));
+            sprites[4] = ImageIO.read(new File("sprites/5.png"));
+            sprites[5] = ImageIO.read(new File("sprites/6.png"));
+            sprites[6] = ImageIO.read(new File("sprites/7.png"));
             
-            for (int i = 0; i < 6; i++) {
-                sprites[i]= ImageIO.read(new File("sprites/" + (i+1) + ".png"));
-            }
-            ImageIcon icon = new ImageIcon(sprites[0]);
-            ahorcado.setIcon(icon);
+//            for (int i = 0; i < 6; i++) {
+//                sprites[i]= ImageIO.read(new File("sprites/" + (i+1) + ".png"));
+//            }
+            icono = new ImageIcon(sprites[0]);
+            ahorcado.setIcon(icono);
             
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -268,6 +276,11 @@ public class Form extends javax.swing.JFrame {
 
         btnX.setFont(new java.awt.Font("Courier New", 0, 24)); // NOI18N
         btnX.setText("X");
+        btnX.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXActionPerformed(evt);
+            }
+        });
 
         btnZ.setFont(new java.awt.Font("Courier New", 0, 24)); // NOI18N
         btnZ.setText("Z");
@@ -303,6 +316,11 @@ public class Form extends javax.swing.JFrame {
 
         btnW.setFont(new java.awt.Font("Courier New", 0, 24)); // NOI18N
         btnW.setText("W");
+        btnW.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnWActionPerformed(evt);
+            }
+        });
 
         btnAyuda.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
         btnAyuda.setText("Ayuda");
@@ -473,11 +491,15 @@ public class Form extends javax.swing.JFrame {
     private void btnBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBActionPerformed
           juego.Intento("B");
         txtArea.setText(juego.Palabra());
+        Fallo();
+        Gano();
     }//GEN-LAST:event_btnBActionPerformed
 
     private void btnIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIActionPerformed
           juego.Intento("I");
         txtArea.setText(juego.Palabra());
+        Fallo();
+        Gano();
     }//GEN-LAST:event_btnIActionPerformed
 
     private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
@@ -487,16 +509,22 @@ public class Form extends javax.swing.JFrame {
     private void btnRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRActionPerformed
         juego.Intento("R");
         txtArea.setText(juego.Palabra());
+        Fallo();
+        Gano();
     }//GEN-LAST:event_btnRActionPerformed
 
     private void btnYActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnYActionPerformed
         juego.Intento("Y");
         txtArea.setText(juego.Palabra());
+        Fallo();
+        Gano();
     }//GEN-LAST:event_btnYActionPerformed
 
     private void btnUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUActionPerformed
           juego.Intento("U");
         txtArea.setText(juego.Palabra());
+        Fallo();
+        Gano();
     }//GEN-LAST:event_btnUActionPerformed
 
     private void btnAyudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAyudaActionPerformed
@@ -511,102 +539,135 @@ public class Form extends javax.swing.JFrame {
         
         juego.Intento("A");
         txtArea.setText(juego.Palabra());
-
-        
-
-       
+        Fallo();
+        Gano();
+     
     }//GEN-LAST:event_btnAActionPerformed
 
     private void btnCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCActionPerformed
           juego.Intento("C");
         txtArea.setText(juego.Palabra());
+        Fallo();
+        Gano();
     }//GEN-LAST:event_btnCActionPerformed
 
     private void btnDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDActionPerformed
           juego.Intento("D");
         txtArea.setText(juego.Palabra());
+        Fallo();
+        Gano();
     }//GEN-LAST:event_btnDActionPerformed
 
     private void btnEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEActionPerformed
           juego.Intento("E");
         txtArea.setText(juego.Palabra());
+        Fallo();
+        Gano();
     }//GEN-LAST:event_btnEActionPerformed
 
     private void btnFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFActionPerformed
           juego.Intento("F");
         txtArea.setText(juego.Palabra());
+        Fallo();
+        Gano();
     }//GEN-LAST:event_btnFActionPerformed
 
     private void btnOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOActionPerformed
           juego.Intento("O");
         txtArea.setText(juego.Palabra());
+        Fallo();
+        Gano();
     }//GEN-LAST:event_btnOActionPerformed
 
     private void btnJActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJActionPerformed
           juego.Intento("J");
         txtArea.setText(juego.Palabra());
+        Fallo();
+        Gano();
     }//GEN-LAST:event_btnJActionPerformed
 
     private void btnHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHActionPerformed
         juego.Intento("H");
         txtArea.setText(juego.Palabra());
+        Fallo();
+        Gano();
     }//GEN-LAST:event_btnHActionPerformed
 
     private void btnKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKActionPerformed
         juego.Intento("K");
         txtArea.setText(juego.Palabra());
+        Fallo();
+        Gano();
     }//GEN-LAST:event_btnKActionPerformed
 
     private void btnLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLActionPerformed
        juego.Intento("L");
         txtArea.setText(juego.Palabra());
+        Fallo();
+        Gano();
     }//GEN-LAST:event_btnLActionPerformed
 
     private void btnMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMActionPerformed
         juego.Intento("M");
         txtArea.setText(juego.Palabra());
+        Fallo();
+        Gano();
     }//GEN-LAST:event_btnMActionPerformed
 
     private void btnNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNActionPerformed
         juego.Intento("N");
         txtArea.setText(juego.Palabra());
+        Fallo();
+        Gano();
     }//GEN-LAST:event_btnNActionPerformed
 
     private void btnPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPActionPerformed
         juego.Intento("P");
         txtArea.setText(juego.Palabra());
+        Fallo();
+        Gano();
     }//GEN-LAST:event_btnPActionPerformed
 
     private void btnQActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQActionPerformed
        juego.Intento("Q");
         txtArea.setText(juego.Palabra());
+        Fallo();
+        Gano();
     }//GEN-LAST:event_btnQActionPerformed
 
     private void btnSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSActionPerformed
         juego.Intento("S");
         txtArea.setText(juego.Palabra());
+        Fallo();
+        Gano();
     }//GEN-LAST:event_btnSActionPerformed
 
     private void btnTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTActionPerformed
        juego.Intento("T");
         txtArea.setText(juego.Palabra());
+        Fallo();
+        Gano();
     }//GEN-LAST:event_btnTActionPerformed
 
     private void btnVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVActionPerformed
         juego.Intento("V");
         txtArea.setText(juego.Palabra());
+        Fallo();
+        Gano();
     }//GEN-LAST:event_btnVActionPerformed
 
     private void btnGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGActionPerformed
-          juego.Intento("G");
+        juego.Intento("G");
         txtArea.setText(juego.Palabra());
+        Fallo();
+        Gano();
     }//GEN-LAST:event_btnGActionPerformed
 
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
       
        
        lblAyuda.setVisible(false);
-       juego = new Ahorcado(7);
+       juego = new Ahorcado(6);
        juego.Inicio();
        txtArea.setText(juego.Palabra());
     }//GEN-LAST:event_btnIniciarActionPerformed
@@ -621,9 +682,26 @@ public class Form extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRetrocederActionPerformed
 
     private void btnZActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnZActionPerformed
-          juego.Intento("Z");
+         juego.Intento("Z");
         txtArea.setText(juego.Palabra());
+        Fallo();
+        Gano();
+
     }//GEN-LAST:event_btnZActionPerformed
+
+    private void btnWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnWActionPerformed
+            juego.Intento("W");
+        txtArea.setText(juego.Palabra());
+        Fallo();
+        Gano();
+    }//GEN-LAST:event_btnWActionPerformed
+
+    private void btnXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXActionPerformed
+        juego.Intento("X");
+        txtArea.setText(juego.Palabra());
+        Fallo();
+        Gano();
+    }//GEN-LAST:event_btnXActionPerformed
 
     /**
      * @param args the command line arguments
@@ -659,6 +737,30 @@ public class Form extends javax.swing.JFrame {
             }
         });
     }
+    
+    public static Form getInstance() {
+        if (instance == null) {
+            instance = new Form();
+        }
+        return instance;
+    }
+    
+    public void Fallo()
+    {
+        if (juego.getFallos()!=7) {
+            System.out.println("fALLO: "+ juego.getFallos()+"\n");
+            icono = new ImageIcon(sprites[juego.getFallos()]);
+            ahorcado.setIcon(icono);        
+        }
+    }
+    
+    public void Gano()
+    {
+        if (juego.Completado()) {
+            JOptionPane.showMessageDialog(null, "Ganaste!", "Felicidades",JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
+
 
 
     Ahorcado juego;
@@ -673,9 +775,10 @@ public class Form extends javax.swing.JFrame {
     BufferedImage[] sprites;
     ImageIcon icono;
     public int cont = 1;
+    private static Form instance = null;
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel ahorcado;
+    public javax.swing.JLabel ahorcado;
     private javax.swing.JButton btnA;
     private javax.swing.JButton btnAyuda;
     private javax.swing.JButton btnB;
