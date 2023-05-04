@@ -26,8 +26,7 @@ public class Ahorcado {
     public String[] letras;  //arreglo de String que almacena el juego como tal, dicho arreglo se llenara de letra en letra hasta adivinar toda la palabra
     String[] palabraAux;  //arreglo de String para almacenar palabra a adivinar
     private Stack<String[]> pila;  //uso de pila de Java, no use la clase Pila creada en clases debido a la limitacion de tama?o
-    public BufferedImage[] imagenes;
-    public int intentos;
+    private int intentos;
 
 
 
@@ -105,29 +104,35 @@ public class Ahorcado {
     {         
         if (!Completado()) 
         {
-           boolean encontrado = false;
-            for (int i = 0; i < letras.length; i++) {
-                if (palabraAux[i].equals(letra)) {
-                    letras[i] = letra;
-                    encontrado = true;
+            if (intentos > 0) 
+            {
+                boolean encontrado = false;
+                for (int i = 0; i < letras.length; i++) {
+                    if (palabraAux[i].equals(letra)) {
+                        letras[i] = letra;
+                        encontrado = true;
+                    }
+
+                }
+
+                if (!encontrado) {
+                    intentos--;
+                    System.out.println("Intentos: " + intentos);
+                }
+                //Comprobar si ultimo elemento de la pila no coincide con el estado actual de letras, para que asi no haya elementos repetidos en la pila
+                if (!Arrays.equals(letras.clone(), pila.peek())) {
+                    pila.push(letras.clone());  //se usa el metodo clone para obtener el estado actual del juego
                 }
                 
+                System.out.println("Pila: " + PrintPila());
             }
-            
-            if (!encontrado) {              
-                intentos--;
-                System.out.println("Intentos: "+ intentos);
-            }
-             //Comprobar si ultimo elemento de la pila no coincide con el estado actual de letras, para que asi no haya elementos repetidos en la pila
-            if (!Arrays.equals(letras.clone(), pila.peek())) {
-                pila.push(letras.clone());  //se usa el metodo clone para obtener el estado actual del juego
-            }
-      
-            
-            System.out.println("Pila: " + PrintPila());
-        }
-        //return false;
 
+            
+            //            if (intentos == 0) {
+//                 JOptionPane.showMessageDialog(null, "Perdiste! La palabra era: "+this.Palabra(), "Fin",JOptionPane.ERROR_MESSAGE);
+//            }
+        
+        }
     }
     
     public boolean Retroceder()
@@ -183,5 +188,11 @@ public class Ahorcado {
         }
         return r;
     }
+
+    public int getIntentos() {
+        return intentos;
+    }
+    
+    
        
 }

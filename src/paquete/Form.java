@@ -271,6 +271,11 @@ public class Form extends javax.swing.JFrame {
 
         btnZ.setFont(new java.awt.Font("Courier New", 0, 24)); // NOI18N
         btnZ.setText("Z");
+        btnZ.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnZActionPerformed(evt);
+            }
+        });
 
         btnY.setFont(new java.awt.Font("Courier New", 0, 24)); // NOI18N
         btnY.setText("Y");
@@ -614,6 +619,11 @@ public class Form extends javax.swing.JFrame {
         else
             JOptionPane.showMessageDialog(null, "No puede retroceder mas", "Error",JOptionPane.ERROR_MESSAGE);
     }//GEN-LAST:event_btnRetrocederActionPerformed
+
+    private void btnZActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnZActionPerformed
+          juego.Intento("Z");
+        txtArea.setText(juego.Palabra());
+    }//GEN-LAST:event_btnZActionPerformed
 
     /**
      * @param args the command line arguments
