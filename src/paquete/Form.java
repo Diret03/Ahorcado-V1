@@ -676,6 +676,14 @@ public final class Form extends javax.swing.JFrame {
         
         if (juego.Retroceder()) {
             txtArea.setText(juego.Palabra());
+            
+            
+//            if (rootPaneCheckingEnabled) {
+//                
+//            }
+//            icono = new ImageIcon(sprites[juego.getFallos()]);
+//            ahorcado.setIcon(icono);      
+            
         }
         else
             JOptionPane.showMessageDialog(null, "No puede retroceder mas", "Error",JOptionPane.ERROR_MESSAGE);
