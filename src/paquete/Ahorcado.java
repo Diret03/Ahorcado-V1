@@ -92,6 +92,7 @@ public class Ahorcado {
         //System.out.println(this.StringArray(letras));
      
         System.out.println("Mis cambios");
+        System.out.println("Cambiando....");
     }
   
     public boolean Completado()
