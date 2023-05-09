@@ -67,6 +67,7 @@ public class Ahorcado {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+        
     }
 
     public String PalabraRandom() {
@@ -90,6 +91,7 @@ public class Ahorcado {
         //System.out.println(this.StringArray(letras));
      
         System.out.println("Mis cambios");
+        System.out.println("Mis cambios 2");
     }
   
     public boolean Completado()
