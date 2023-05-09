@@ -71,7 +71,7 @@ public class Ahorcado {
     }
 
     public String PalabraRandom() {
-        
+        //Palabras del juego
         //se obtiene una palabra aleatoria del arraylist
         return palabras.get(new Random().nextInt(palabras.size())).toUpperCase();
     }
