@@ -49,6 +49,8 @@ public class Ahorcado {
         } catch (Exception e) 
         {
             System.out.println(e.getMessage());
+            System.out.println("Palabras...2");
+            
         }          
     }
     
@@ -91,9 +93,11 @@ public class Ahorcado {
 
         
         //System.out.println(this.StringArray(letras));
+
      
         System.out.println("Mis cambios");
         System.out.println("Mis cambios 2");
+
     }
   
     public boolean Completado()
