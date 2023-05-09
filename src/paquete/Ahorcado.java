@@ -66,6 +66,7 @@ public class Ahorcado {
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
+            System.out.println("Palabras.......");
         }
     }
 
@@ -73,6 +74,7 @@ public class Ahorcado {
         //Palabras del juego
         //se obtiene una palabra aleatoria del arraylist
         return palabras.get(new Random().nextInt(palabras.size())).toUpperCase();
+        
     }
     
     public void Inicio()  //metodo para asignar una letra aleatoria en una posicion aleatoria en el arreglo de letras, basandose en la palabra a adivinar
