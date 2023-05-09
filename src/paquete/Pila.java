@@ -100,4 +100,7 @@ public class Pila {
 
         return salida;
     }
+    public String Imprimir(){
+        return "Cambios";
+    }
 }
