@@ -765,7 +765,7 @@ public final class Form extends javax.swing.JFrame {
     
     public void Gano()
     {
-        if (juego.Completado()) {
+        if (juego.Completado()) { //cambio en rama DiegoR...
             JOptionPane.showMessageDialog(null, "Ganaste!", "Felicidades",JOptionPane.INFORMATION_MESSAGE);
         }
     }
