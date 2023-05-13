@@ -523,7 +523,6 @@ public final class Form extends javax.swing.JFrame {
         txtArea.setText(juego.Palabra());
         Fallo();
         Gano();
-        txtArea.setText("Letra b.....");
     }//GEN-LAST:event_btnBActionPerformed
 
     private void btnIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIActionPerformed
