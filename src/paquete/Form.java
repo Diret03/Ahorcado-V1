@@ -234,7 +234,7 @@ public final class Form extends javax.swing.JFrame {
 
         jButton15.setBackground(new java.awt.Color(0, 255, 255));
         jButton15.setFont(new java.awt.Font("Courier New", 0, 24)); // NOI18N
-        jButton15.setText("?");
+        jButton15.setText("Ñ");
         jButton15.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton15ActionPerformed(evt);
@@ -349,6 +349,7 @@ public final class Form extends javax.swing.JFrame {
             }
         });
 
+        btnAyuda.setBackground(new java.awt.Color(255, 255, 153));
         btnAyuda.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
         btnAyuda.setText("Ayuda");
         btnAyuda.addActionListener(new java.awt.event.ActionListener() {
@@ -357,6 +358,7 @@ public final class Form extends javax.swing.JFrame {
             }
         });
 
+        btnIniciar.setBackground(new java.awt.Color(255, 255, 153));
         btnIniciar.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
         btnIniciar.setText("Iniciar");
         btnIniciar.addActionListener(new java.awt.event.ActionListener() {
@@ -365,6 +367,7 @@ public final class Form extends javax.swing.JFrame {
             }
         });
 
+        btnRetroceder.setBackground(new java.awt.Color(255, 255, 153));
         btnRetroceder.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
         btnRetroceder.setText("Retroceder");
         btnRetroceder.addActionListener(new java.awt.event.ActionListener() {
