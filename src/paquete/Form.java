@@ -22,24 +22,25 @@ import javax.swing.JOptionPane;
  */
 public final class Form extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Form
-     */
+    Ahorcado juego;
+    BufferedImage[] sprites;
+    ImageIcon icono;
+    int numIntentosMAX = 7;
+    boolean pistaSelect = false;
+    private static Form instance = null;
+    
+    
+    
     private Form() {
-        initComponents();
+        initComponents();     
         
-        
-        txtArea.setText("_ _ _ _ _");
+        juego = new Ahorcado();
+        juego.Inicio();
+        txtArea.setText(juego.Palabra());
+        lblAyuda.setVisible(false);
+        lblPista.setVisible(false);
        
         try {
-         
-//            _1 = ImageIO.read(new File("sprites/1.png"));
-//            _2 = ImageIO.read(new File("sprites/2.png"));
-//            _3 = ImageIO.read(new File("sprites/3.png"));
-//            _4 = ImageIO.read(new File("sprites/4.png"));
-//            _5 = ImageIO.read(new File("sprites/5.png"));
-//            _6 = ImageIO.read(new File("sprites/6.png"));
-//            _7 = ImageIO.read(new File("sprites/7.png"));
             
             sprites = new BufferedImage[7];
             sprites[0] = ImageIO.read(new File("sprites/1.png"));
@@ -50,9 +51,7 @@ public final class Form extends javax.swing.JFrame {
             sprites[5] = ImageIO.read(new File("sprites/6.png"));
             sprites[6] = ImageIO.read(new File("sprites/7.png"));
             
-//            for (int i = 0; i < 6; i++) {
-//                sprites[i]= ImageIO.read(new File("sprites/" + (i+1) + ".png"));
-//            }
+
             icono = new ImageIcon(sprites[0]);
             ahorcado.setIcon(icono);
             
@@ -70,6 +69,7 @@ public final class Form extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuItem1 = new javax.swing.JMenuItem();
         btnG = new javax.swing.JButton();
         btnA = new javax.swing.JButton();
         btnB = new javax.swing.JButton();
@@ -103,10 +103,13 @@ public final class Form extends javax.swing.JFrame {
         lblAyuda = new javax.swing.JLabel();
         txtArea = new javax.swing.JLabel();
         ahorcado = new javax.swing.JLabel();
+        btnPista = new javax.swing.JButton();
+        lblPista = new javax.swing.JLabel();
+
+        jMenuItem1.setText("jMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        btnG.setBackground(new java.awt.Color(0, 255, 255));
         btnG.setFont(new java.awt.Font("Courier New", 0, 24)); // NOI18N
         btnG.setText("G");
         btnG.addActionListener(new java.awt.event.ActionListener() {
@@ -115,7 +118,6 @@ public final class Form extends javax.swing.JFrame {
             }
         });
 
-        btnA.setBackground(new java.awt.Color(51, 255, 255));
         btnA.setFont(new java.awt.Font("Courier New", 0, 24)); // NOI18N
         btnA.setText("A");
         btnA.addActionListener(new java.awt.event.ActionListener() {
@@ -124,7 +126,6 @@ public final class Form extends javax.swing.JFrame {
             }
         });
 
-        btnB.setBackground(new java.awt.Color(0, 255, 255));
         btnB.setFont(new java.awt.Font("Courier New", 0, 24)); // NOI18N
         btnB.setText("B");
         btnB.addActionListener(new java.awt.event.ActionListener() {
@@ -133,7 +134,6 @@ public final class Form extends javax.swing.JFrame {
             }
         });
 
-        btnC.setBackground(new java.awt.Color(0, 255, 255));
         btnC.setFont(new java.awt.Font("Courier New", 0, 24)); // NOI18N
         btnC.setText("C");
         btnC.addActionListener(new java.awt.event.ActionListener() {
@@ -142,7 +142,6 @@ public final class Form extends javax.swing.JFrame {
             }
         });
 
-        btnD.setBackground(new java.awt.Color(0, 255, 255));
         btnD.setFont(new java.awt.Font("Courier New", 0, 24)); // NOI18N
         btnD.setText("D");
         btnD.addActionListener(new java.awt.event.ActionListener() {
@@ -151,7 +150,6 @@ public final class Form extends javax.swing.JFrame {
             }
         });
 
-        btnF.setBackground(new java.awt.Color(0, 255, 255));
         btnF.setFont(new java.awt.Font("Courier New", 0, 24)); // NOI18N
         btnF.setText("F");
         btnF.addActionListener(new java.awt.event.ActionListener() {
@@ -160,7 +158,6 @@ public final class Form extends javax.swing.JFrame {
             }
         });
 
-        btnM.setBackground(new java.awt.Color(0, 255, 255));
         btnM.setFont(new java.awt.Font("Courier New", 0, 24)); // NOI18N
         btnM.setText("M");
         btnM.addActionListener(new java.awt.event.ActionListener() {
@@ -169,7 +166,6 @@ public final class Form extends javax.swing.JFrame {
             }
         });
 
-        btnH.setBackground(new java.awt.Color(0, 255, 255));
         btnH.setFont(new java.awt.Font("Courier New", 0, 24)); // NOI18N
         btnH.setText("H");
         btnH.addActionListener(new java.awt.event.ActionListener() {
@@ -178,7 +174,6 @@ public final class Form extends javax.swing.JFrame {
             }
         });
 
-        btnI.setBackground(new java.awt.Color(0, 255, 255));
         btnI.setFont(new java.awt.Font("Courier New", 0, 24)); // NOI18N
         btnI.setText("I");
         btnI.addActionListener(new java.awt.event.ActionListener() {
@@ -187,7 +182,6 @@ public final class Form extends javax.swing.JFrame {
             }
         });
 
-        btnJ.setBackground(new java.awt.Color(0, 255, 255));
         btnJ.setFont(new java.awt.Font("Courier New", 0, 24)); // NOI18N
         btnJ.setText("J");
         btnJ.addActionListener(new java.awt.event.ActionListener() {
@@ -196,7 +190,6 @@ public final class Form extends javax.swing.JFrame {
             }
         });
 
-        btnK.setBackground(new java.awt.Color(0, 255, 255));
         btnK.setFont(new java.awt.Font("Courier New", 0, 24)); // NOI18N
         btnK.setText("K");
         btnK.addActionListener(new java.awt.event.ActionListener() {
@@ -205,7 +198,6 @@ public final class Form extends javax.swing.JFrame {
             }
         });
 
-        btnL.setBackground(new java.awt.Color(0, 255, 255));
         btnL.setFont(new java.awt.Font("Courier New", 0, 24)); // NOI18N
         btnL.setText("L");
         btnL.addActionListener(new java.awt.event.ActionListener() {
@@ -214,7 +206,6 @@ public final class Form extends javax.swing.JFrame {
             }
         });
 
-        btnR.setBackground(new java.awt.Color(0, 255, 255));
         btnR.setFont(new java.awt.Font("Courier New", 0, 24)); // NOI18N
         btnR.setText("R");
         btnR.addActionListener(new java.awt.event.ActionListener() {
@@ -223,7 +214,6 @@ public final class Form extends javax.swing.JFrame {
             }
         });
 
-        btnN.setBackground(new java.awt.Color(0, 255, 255));
         btnN.setFont(new java.awt.Font("Courier New", 0, 24)); // NOI18N
         btnN.setText("N");
         btnN.addActionListener(new java.awt.event.ActionListener() {
@@ -232,7 +222,6 @@ public final class Form extends javax.swing.JFrame {
             }
         });
 
-        jButton15.setBackground(new java.awt.Color(0, 255, 255));
         jButton15.setFont(new java.awt.Font("Courier New", 0, 24)); // NOI18N
         jButton15.setText("Ñ");
         jButton15.addActionListener(new java.awt.event.ActionListener() {
@@ -241,7 +230,6 @@ public final class Form extends javax.swing.JFrame {
             }
         });
 
-        btnO.setBackground(new java.awt.Color(0, 255, 255));
         btnO.setFont(new java.awt.Font("Courier New", 0, 24)); // NOI18N
         btnO.setText("O");
         btnO.addActionListener(new java.awt.event.ActionListener() {
@@ -250,7 +238,6 @@ public final class Form extends javax.swing.JFrame {
             }
         });
 
-        btnP.setBackground(new java.awt.Color(0, 255, 255));
         btnP.setFont(new java.awt.Font("Courier New", 0, 24)); // NOI18N
         btnP.setText("P");
         btnP.addActionListener(new java.awt.event.ActionListener() {
@@ -259,7 +246,6 @@ public final class Form extends javax.swing.JFrame {
             }
         });
 
-        btnQ.setBackground(new java.awt.Color(0, 255, 255));
         btnQ.setFont(new java.awt.Font("Courier New", 0, 24)); // NOI18N
         btnQ.setText("Q");
         btnQ.addActionListener(new java.awt.event.ActionListener() {
@@ -268,7 +254,6 @@ public final class Form extends javax.swing.JFrame {
             }
         });
 
-        btnE.setBackground(new java.awt.Color(0, 255, 255));
         btnE.setFont(new java.awt.Font("Courier New", 0, 24)); // NOI18N
         btnE.setText("E");
         btnE.addActionListener(new java.awt.event.ActionListener() {
@@ -277,7 +262,6 @@ public final class Form extends javax.swing.JFrame {
             }
         });
 
-        btnS.setBackground(new java.awt.Color(0, 255, 255));
         btnS.setFont(new java.awt.Font("Courier New", 0, 24)); // NOI18N
         btnS.setText("S");
         btnS.addActionListener(new java.awt.event.ActionListener() {
@@ -286,7 +270,6 @@ public final class Form extends javax.swing.JFrame {
             }
         });
 
-        btnT.setBackground(new java.awt.Color(0, 255, 255));
         btnT.setFont(new java.awt.Font("Courier New", 0, 24)); // NOI18N
         btnT.setText("T");
         btnT.addActionListener(new java.awt.event.ActionListener() {
@@ -295,7 +278,6 @@ public final class Form extends javax.swing.JFrame {
             }
         });
 
-        btnX.setBackground(new java.awt.Color(0, 255, 255));
         btnX.setFont(new java.awt.Font("Courier New", 0, 24)); // NOI18N
         btnX.setText("X");
         btnX.addActionListener(new java.awt.event.ActionListener() {
@@ -304,7 +286,6 @@ public final class Form extends javax.swing.JFrame {
             }
         });
 
-        btnZ.setBackground(new java.awt.Color(0, 255, 255));
         btnZ.setFont(new java.awt.Font("Courier New", 0, 24)); // NOI18N
         btnZ.setText("Z");
         btnZ.addActionListener(new java.awt.event.ActionListener() {
@@ -313,7 +294,6 @@ public final class Form extends javax.swing.JFrame {
             }
         });
 
-        btnY.setBackground(new java.awt.Color(0, 255, 255));
         btnY.setFont(new java.awt.Font("Courier New", 0, 24)); // NOI18N
         btnY.setText("Y");
         btnY.addActionListener(new java.awt.event.ActionListener() {
@@ -322,7 +302,6 @@ public final class Form extends javax.swing.JFrame {
             }
         });
 
-        btnU.setBackground(new java.awt.Color(0, 255, 255));
         btnU.setFont(new java.awt.Font("Courier New", 0, 24)); // NOI18N
         btnU.setText("U");
         btnU.addActionListener(new java.awt.event.ActionListener() {
@@ -331,7 +310,6 @@ public final class Form extends javax.swing.JFrame {
             }
         });
 
-        btnV.setBackground(new java.awt.Color(0, 255, 255));
         btnV.setFont(new java.awt.Font("Courier New", 0, 24)); // NOI18N
         btnV.setText("V");
         btnV.addActionListener(new java.awt.event.ActionListener() {
@@ -340,7 +318,6 @@ public final class Form extends javax.swing.JFrame {
             }
         });
 
-        btnW.setBackground(new java.awt.Color(0, 255, 255));
         btnW.setFont(new java.awt.Font("Courier New", 0, 24)); // NOI18N
         btnW.setText("W");
         btnW.addActionListener(new java.awt.event.ActionListener() {
@@ -349,8 +326,7 @@ public final class Form extends javax.swing.JFrame {
             }
         });
 
-        btnAyuda.setBackground(new java.awt.Color(255, 255, 153));
-        btnAyuda.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        btnAyuda.setFont(new java.awt.Font("Courier New", 0, 15)); // NOI18N
         btnAyuda.setText("Ayuda");
         btnAyuda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -358,8 +334,7 @@ public final class Form extends javax.swing.JFrame {
             }
         });
 
-        btnIniciar.setBackground(new java.awt.Color(255, 255, 153));
-        btnIniciar.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        btnIniciar.setFont(new java.awt.Font("Courier New", 0, 15)); // NOI18N
         btnIniciar.setText("Iniciar");
         btnIniciar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -367,8 +342,7 @@ public final class Form extends javax.swing.JFrame {
             }
         });
 
-        btnRetroceder.setBackground(new java.awt.Color(255, 255, 153));
-        btnRetroceder.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        btnRetroceder.setFont(new java.awt.Font("Courier New", 0, 15)); // NOI18N
         btnRetroceder.setText("Retroceder");
         btnRetroceder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -376,7 +350,21 @@ public final class Form extends javax.swing.JFrame {
             }
         });
 
+        lblAyuda.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        lblAyuda.setText("Ayuda");
+
         txtArea.setFont(new java.awt.Font("Courier New", 1, 36)); // NOI18N
+
+        btnPista.setFont(new java.awt.Font("Courier New", 0, 15)); // NOI18N
+        btnPista.setText("Pista");
+        btnPista.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPistaActionPerformed(evt);
+            }
+        });
+
+        lblPista.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        lblPista.setText("Pista");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -386,91 +374,100 @@ public final class Form extends javax.swing.JFrame {
                 .addGap(74, 74, 74)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(ahorcado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(43, 43, 43)
-                        .addComponent(lblAyuda, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(143, 143, 143))
-                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(btnO, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(btnP, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(btnQ, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(btnR, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(btnS, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(btnT, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addComponent(btnH, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(btnI, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(btnJ, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(btnK, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(btnL, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(btnM, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(btnN, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(btnU, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(btnV, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addComponent(btnIniciar, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(btnW, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(btnX, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addComponent(btnRetroceder, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(btnY, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(btnZ, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addComponent(btnAyuda, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txtArea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(btnA, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(btnB, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(btnC, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(btnD, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(btnE, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(btnF, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(btnG, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addContainerGap(272, Short.MAX_VALUE))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnO, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnP, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnQ, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnR, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnS, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnT, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(btnU, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(btnV, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(btnIniciar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(btnW, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(btnX, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(btnRetroceder, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(btnY, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(btnZ, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(btnPista, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(btnAyuda, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(btnH, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnI, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnJ, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnK, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnL, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnM, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnN, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(144, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(ahorcado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(35, 35, 35)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lblAyuda, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
+                            .addComponent(lblPista, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(61, 61, 61))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtArea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnA, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnB, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnC, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnD, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnE, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnF, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnG, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(24, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(lblAyuda, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(55, 55, 55))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(24, Short.MAX_VALUE)
                         .addComponent(ahorcado, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(116, 116, 116)
+                        .addComponent(lblAyuda, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(44, 44, 44)
+                        .addComponent(lblPista, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addComponent(txtArea, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -511,7 +508,8 @@ public final class Form extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAyuda, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnRetroceder, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnIniciar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnIniciar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnPista, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(17, 17, 17))
         );
 
@@ -519,17 +517,18 @@ public final class Form extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBActionPerformed
-          juego.Intento("B");
+        Intento("B");
         txtArea.setText(juego.Palabra());
-        Fallo();
-        Gano();
+
+        
+ 
     }//GEN-LAST:event_btnBActionPerformed
 
     private void btnIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIActionPerformed
-          juego.Intento("I");
+        Intento("I");
         txtArea.setText(juego.Palabra());
-        Fallo();
-        Gano();
+
+   
     }//GEN-LAST:event_btnIActionPerformed
 
     private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
@@ -537,209 +536,278 @@ public final class Form extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton15ActionPerformed
 
     private void btnRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRActionPerformed
-        juego.Intento("R");
+        Intento("R");
         txtArea.setText(juego.Palabra());
-        Fallo();
-        Gano();
+
+ 
     }//GEN-LAST:event_btnRActionPerformed
 
     private void btnYActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnYActionPerformed
-        juego.Intento("Y");
+        Intento("Y");
         txtArea.setText(juego.Palabra());
-        Fallo();
-        Gano();
+
+   
     }//GEN-LAST:event_btnYActionPerformed
 
     private void btnUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUActionPerformed
-          juego.Intento("U");
+        Intento("U");
         txtArea.setText(juego.Palabra());
-        Fallo();
-        Gano();
+
+   
     }//GEN-LAST:event_btnUActionPerformed
 
     private void btnAyudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAyudaActionPerformed
 
-        lblAyuda.setVisible(true);
-        lblAyuda.setText(Arrays.toString(juego.palabraAux));
-        
-
+        if (juego != null) {
+            lblAyuda.setVisible(true);
+            lblAyuda.setText(Arrays.toString(juego.palabraAux));
+        }
+        else
+            JOptionPane.showMessageDialog(null, "Ni siquiera ha empezado el juego...", "Error",JOptionPane.ERROR_MESSAGE);
+              
     }//GEN-LAST:event_btnAyudaActionPerformed
 
     private void btnAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAActionPerformed
         
-        juego.Intento("A");
+        Intento("A");
         txtArea.setText(juego.Palabra());
-        Fallo();
-        Gano();
+ 
+  
      
     }//GEN-LAST:event_btnAActionPerformed
 
     private void btnCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCActionPerformed
-          juego.Intento("C");
+        Intento("C");
         txtArea.setText(juego.Palabra());
-        Fallo();
-        Gano();
+
+    
     }//GEN-LAST:event_btnCActionPerformed
 
     private void btnDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDActionPerformed
-          juego.Intento("D");
+        Intento("D");
         txtArea.setText(juego.Palabra());
-        Fallo();
-        Gano();
+
+
     }//GEN-LAST:event_btnDActionPerformed
 
     private void btnEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEActionPerformed
-          juego.Intento("E");
+        Intento("E");
         txtArea.setText(juego.Palabra());
-        Fallo();
-        Gano();
+
+      
     }//GEN-LAST:event_btnEActionPerformed
 
     private void btnFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFActionPerformed
-          juego.Intento("F");
+        Intento("F");
         txtArea.setText(juego.Palabra());
-        Fallo();
-        Gano();
+  
+      
     }//GEN-LAST:event_btnFActionPerformed
 
     private void btnOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOActionPerformed
-          juego.Intento("O");
+        Intento("O");
         txtArea.setText(juego.Palabra());
-        Fallo();
-        Gano();
+   
+       
     }//GEN-LAST:event_btnOActionPerformed
 
     private void btnJActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJActionPerformed
-          juego.Intento("J");
+        Intento("J");
         txtArea.setText(juego.Palabra());
-        Fallo();
-        Gano();
+
+     
     }//GEN-LAST:event_btnJActionPerformed
 
     private void btnHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHActionPerformed
-        juego.Intento("H");
+        Intento("H");
         txtArea.setText(juego.Palabra());
-        Fallo();
-        Gano();
+   
+    
     }//GEN-LAST:event_btnHActionPerformed
 
     private void btnKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKActionPerformed
-        juego.Intento("K");
+        Intento("K");
         txtArea.setText(juego.Palabra());
-        Fallo();
-        Gano();
+ 
+  
     }//GEN-LAST:event_btnKActionPerformed
 
     private void btnLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLActionPerformed
-       juego.Intento("L");
+        Intento("L");
         txtArea.setText(juego.Palabra());
-        Fallo();
-        Gano();
+    
+    
     }//GEN-LAST:event_btnLActionPerformed
 
     private void btnMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMActionPerformed
-        juego.Intento("M");
+        Intento("M");
         txtArea.setText(juego.Palabra());
-        Fallo();
-        Gano();
+     
+  
     }//GEN-LAST:event_btnMActionPerformed
 
     private void btnNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNActionPerformed
-        juego.Intento("N");
+        Intento("N");
         txtArea.setText(juego.Palabra());
-        Fallo();
-        Gano();
+   
+ 
     }//GEN-LAST:event_btnNActionPerformed
 
     private void btnPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPActionPerformed
-        juego.Intento("P");
+        Intento("P");
         txtArea.setText(juego.Palabra());
-        Fallo();
-        Gano();
+
+   
     }//GEN-LAST:event_btnPActionPerformed
 
     private void btnQActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQActionPerformed
-       juego.Intento("Q");
+        Intento("Q");
         txtArea.setText(juego.Palabra());
-        Fallo();
-        Gano();
+
+  
     }//GEN-LAST:event_btnQActionPerformed
 
     private void btnSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSActionPerformed
-        juego.Intento("S");
+        Intento("S");
         txtArea.setText(juego.Palabra());
-        Fallo();
-        Gano();
+ 
+   
     }//GEN-LAST:event_btnSActionPerformed
 
     private void btnTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTActionPerformed
-       juego.Intento("T");
+        Intento("T");
         txtArea.setText(juego.Palabra());
-        Fallo();
-        Gano();
+   
+   
     }//GEN-LAST:event_btnTActionPerformed
 
     private void btnVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVActionPerformed
-        juego.Intento("V");
+        Intento("V");
         txtArea.setText(juego.Palabra());
-        Fallo();
-        Gano();
+ 
+   
     }//GEN-LAST:event_btnVActionPerformed
 
     private void btnGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGActionPerformed
-        juego.Intento("G");
+        Intento("G");
         txtArea.setText(juego.Palabra());
-        Fallo();
-        Gano();
+  
+
     }//GEN-LAST:event_btnGActionPerformed
 
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
       
        
        lblAyuda.setVisible(false);
-       juego = new Ahorcado(6);
+       lblPista.setVisible(false);
+       juego = new Ahorcado();
        juego.Inicio();
        txtArea.setText(juego.Palabra());
+
+        icono = new ImageIcon(sprites[0]);
+        ahorcado.setIcon(icono);
+        pistaSelect = false;
+       
+         
+        
+       
     }//GEN-LAST:event_btnIniciarActionPerformed
 
     private void btnRetrocederActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRetrocederActionPerformed
-        
-        if (juego.Retroceder()) {
-            txtArea.setText(juego.Palabra());
-            
-            
-//            if (rootPaneCheckingEnabled) {
-//                
-//            }
-//            icono = new ImageIcon(sprites[juego.getFallos()]);
-//            ahorcado.setIcon(icono);      
-            
+
+        if (Arrays.equals(juego.palabraAux, juego.letras))
+        {
+            JOptionPane.showMessageDialog(null, "No se puede retroceder, ya ganaste...", "Error", JOptionPane.ERROR_MESSAGE);
         }
-        else
-            JOptionPane.showMessageDialog(null, "No puede retroceder mas", "Error",JOptionPane.ERROR_MESSAGE);
+        else {
+            if (juego.intentoActual == numIntentosMAX) 
+            {
+                JOptionPane.showMessageDialog(null, "No se puede retroceder, ya perdiste...", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+            else 
+            {
+                if (juego.intentoActual > 0 && juego.pila.size() > 1) 
+                {
+
+                    juego.pila.pop();
+                    juego.letras = juego.pila.peek();
+                    txtArea.setText(juego.Palabra());
+
+                    juego.intentoActual--;
+                    icono = new ImageIcon(sprites[juego.intentoActual]);
+                    ahorcado.setIcon(icono);
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "No puede retroceder mas", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        }
+      
     }//GEN-LAST:event_btnRetrocederActionPerformed
 
     private void btnZActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnZActionPerformed
-         juego.Intento("Z");
+        Intento("Z");
         txtArea.setText(juego.Palabra());
-        Fallo();
-        Gano();
+     
 
     }//GEN-LAST:event_btnZActionPerformed
 
     private void btnWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnWActionPerformed
-            juego.Intento("W");
+        Intento("W");
         txtArea.setText(juego.Palabra());
-        Fallo();
-        Gano();
+      
+     
     }//GEN-LAST:event_btnWActionPerformed
 
     private void btnXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXActionPerformed
-        juego.Intento("X");
+        Intento("X");
         txtArea.setText(juego.Palabra());
-        Fallo();
-        Gano();
+        
+  
     }//GEN-LAST:event_btnXActionPerformed
+
+    private void btnPistaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPistaActionPerformed
+        
+        if (juego!=null) {
+            
+            if (!pistaSelect) {
+                
+                Random random = new Random();
+                String[] pista = (String[])juego.pila.peek().clone();
+                int numExcluido = 0;
+                
+                
+                for (int i = 0; i < pista.length; i++) {
+                    
+                    if (pista[i] != null) {
+                        numExcluido = i;
+                        break;
+                    }
+                }
+
+                int indiceRandom;
+                
+                do {
+                    indiceRandom = random.nextInt(pista.length) + 0;
+                } while (indiceRandom  == numExcluido);
+                
+                         
+                for (int i = 0; i < pista.length; i++) {
+                    
+                    if (!juego.palabraAux[indiceRandom].equals(pista[i])) {
+                        
+                        pista[indiceRandom] = juego.palabraAux[indiceRandom];
+                        break;
+                        
+                    }               
+                }    
+                
+                lblPista.setVisible(true);
+                lblPista.setText(juego.Palabra(pista));
+                pistaSelect = true;
+            }
+        }
+    }//GEN-LAST:event_btnPistaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -783,37 +851,50 @@ public final class Form extends javax.swing.JFrame {
         return instance;
     }
     
-    public void Fallo()
-    {
-        if (juego.getFallos()!=7) {
-            System.out.println("fALLO: "+ juego.getFallos()+"\n");
-            icono = new ImageIcon(sprites[juego.getFallos()]);
-            ahorcado.setIcon(icono);        
-        }
-    }
     
-    public void Gano()
-    {
-        if (juego.Completado()) {
-            JOptionPane.showMessageDialog(null, "Ganaste!", "Felicidades",JOptionPane.INFORMATION_MESSAGE);
+    public void Intento(String letra)
+    {   
+
+  
+        boolean encontrado = false;
+        for (int i = 0; i < juego.letras.length; i++) {
+            if (juego.palabraAux[i].equals(letra)) {
+                juego.letras[i] = letra;
+                encontrado = true;
+            }
+
         }
+
+        if (!encontrado) {
+
+            juego.intentoActual++;
+            if (juego.intentoActual == numIntentosMAX) {
+                JOptionPane.showMessageDialog(null, "Perdiste! La palabra era: " + juego.StringArray(juego.palabraAux), "Fin", JOptionPane.ERROR_MESSAGE);
+
+            }
+            else
+            {
+                icono = new ImageIcon(sprites[juego.intentoActual]);
+                ahorcado.setIcon(icono);
+            }
+        } else {
+            if (Arrays.equals(juego.palabraAux, juego.letras)) {
+                JOptionPane.showMessageDialog(null, "Ganaste!", "Felicidades", JOptionPane.INFORMATION_MESSAGE);
+            }
+        }
+        
+        //Comprobar si ultimo elemento de la pila no coincide con el estado actual de letras, para que asi no haya elementos repetidos en la pila
+        if (!Arrays.equals(juego.letras.clone(), juego.pila.peek())) {
+           juego.pila.push(juego.letras.clone());  //se usa el metodo clone para obtener el estado actual del juego
+        }
+
+        System.out.println("Pila: " + juego.PrintPila());
+                   
     }
 
 
 
-    Ahorcado juego;
-    String ayuda;
-    BufferedImage _1;
-    BufferedImage _2;
-    BufferedImage _3;
-    BufferedImage _4;
-    BufferedImage _5;
-    BufferedImage _6;
-    BufferedImage _7;
-    BufferedImage[] sprites;
-    ImageIcon icono;
-    public int cont = 1;
-    private static Form instance = null;
+
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JLabel ahorcado;
@@ -835,6 +916,7 @@ public final class Form extends javax.swing.JFrame {
     private javax.swing.JButton btnN;
     private javax.swing.JButton btnO;
     private javax.swing.JButton btnP;
+    private javax.swing.JButton btnPista;
     private javax.swing.JButton btnQ;
     private javax.swing.JButton btnR;
     private javax.swing.JButton btnRetroceder;
@@ -847,7 +929,9 @@ public final class Form extends javax.swing.JFrame {
     private javax.swing.JButton btnY;
     private javax.swing.JButton btnZ;
     private javax.swing.JButton jButton15;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JLabel lblAyuda;
+    private javax.swing.JLabel lblPista;
     private javax.swing.JLabel txtArea;
     // End of variables declaration//GEN-END:variables
 }
