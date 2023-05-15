@@ -46,9 +46,9 @@ public final class Form extends javax.swing.JFrame {
             boton.setEnabled(false);
         }
 
-        juego = new Ahorcado();
-        juego.Inicio();
-        txtArea.setText(juego.Palabra());
+//        juego = new Ahorcado();
+//        juego.Inicio();
+//        txtArea.setText(juego.Palabra());
         lblAyuda.setVisible(false);
         lblPista.setVisible(false);
 
@@ -542,7 +542,9 @@ public final class Form extends javax.swing.JFrame {
     }//GEN-LAST:event_btnIActionPerformed
 
     private void btnÑActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnÑActionPerformed
-        // TODO add your handling code here:
+        Intento("Ñ");
+        txtArea.setText(juego.Palabra());
+
     }//GEN-LAST:event_btnÑActionPerformed
 
     private void btnRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRActionPerformed
@@ -735,12 +737,14 @@ public final class Form extends javax.swing.JFrame {
                 if (juego.intentoActual > 0 && juego.pila.size() > 1) {
 
                     juego.pila.pop();
-                    juego.letras = juego.pila.peek();
+                    juego.letras = juego.pila.peek().clone();
                     txtArea.setText(juego.Palabra());
 
                     juego.intentoActual--;
                     icono = new ImageIcon(sprites[juego.intentoActual]);
                     ahorcado.setIcon(icono);
+                    
+                    System.out.println("Pila retrocedida: "+juego.PrintPila());
 
                 } else {
                     JOptionPane.showMessageDialog(null, "No puede retroceder mas", "Error", JOptionPane.ERROR_MESSAGE);
