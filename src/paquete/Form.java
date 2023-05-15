@@ -32,8 +32,14 @@ public final class Form extends javax.swing.JFrame {
 
     public Form() {
         initComponents();
+        /*
+        Al iniciar el juego el usuario no puede jugar mientras no haya dado clic en iniciar es por esto la 
+        desabilitacion de los botones 
+        */
         // Crear un arreglo de botones de letras
-        JButton[] botonesLetras = {btnA, btnB, btnC, btnD, btnE, btnF, btnG, btnH, btnI, btnK, btnL, btnM, btnN, btnO, btnP, btnQ, btnR, btnS, btnT, btnU, btnW, btnX, btnY, btnZ, btnJ, btnÑ, btnV};
+        JButton[] botonesLetras = {btnA, btnB, btnC, btnD, btnE, btnF, btnG, btnH, btnI, btnK, btnL, btnM,
+            btnN, btnO, btnP, btnQ, btnR, btnS, btnT, btnU, btnW, btnX, btnY, btnZ,
+            btnJ, btnÑ, btnV};
 
 // Deshabilitar los botones de letras
         for (JButton boton : botonesLetras) {
