@@ -4,6 +4,7 @@
  */
 package paquete;
 
+import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -35,7 +36,7 @@ public final class Form extends javax.swing.JFrame {
         /*
         Al iniciar el juego el usuario no puede jugar mientras no haya dado clic en iniciar es por esto la 
         desabilitacion de los botones 
-        */
+         */
         // Crear un arreglo de botones de letras
         JButton[] botonesLetras = {btnA, btnB, btnC, btnD, btnE, btnF, btnG, btnH, btnI, btnK, btnL, btnM,
             btnN, btnO, btnP, btnQ, btnR, btnS, btnT, btnU, btnW, btnX, btnY, btnZ,
@@ -46,9 +47,6 @@ public final class Form extends javax.swing.JFrame {
             boton.setEnabled(false);
         }
 
-        juego = new Ahorcado();
-        juego.Inicio();
-        txtArea.setText(juego.Palabra());
         lblAyuda.setVisible(false);
         lblPista.setVisible(false);
 
@@ -65,6 +63,9 @@ public final class Form extends javax.swing.JFrame {
 
             icono = new ImageIcon(sprites[0]);
             ahorcado.setIcon(icono);
+
+            ImageIcon formLogo = new ImageIcon("icono.png");
+            setIconImage(formLogo.getImage());
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -120,6 +121,7 @@ public final class Form extends javax.swing.JFrame {
         jMenuItem1.setText("jMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Juego del Ahorcado");
 
         btnG.setFont(new java.awt.Font("Courier New", 0, 24)); // NOI18N
         btnG.setText("G");
@@ -382,7 +384,7 @@ public final class Form extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(74, 74, 74)
+                .addGap(80, 80, 80)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -438,7 +440,7 @@ public final class Form extends javax.swing.JFrame {
                                 .addComponent(btnM, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnN, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(144, Short.MAX_VALUE))
+                        .addContainerGap(138, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(ahorcado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(35, 35, 35)
@@ -528,40 +530,103 @@ public final class Form extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBActionPerformed
-        Intento("B");
+        String letra = "B"; // Letra seleccionada 
+
+        Intento(letra);
         txtArea.setText(juego.Palabra());
+
+        if (Arrays.asList(juego.letras).contains(letra)) {
+            // Adivinó la letra correctamente
+            btnB.setBackground(Color.GREEN); // Cambiar el color del botón al adivinar correctamente
+        } else {
+
+            btnB.setBackground(null);
+        }
 
 
     }//GEN-LAST:event_btnBActionPerformed
 
     private void btnIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIActionPerformed
-        Intento("I");
+        String letra = "I"; // Letra seleccionada 
+
+        Intento(letra);
         txtArea.setText(juego.Palabra());
+
+        if (Arrays.asList(juego.letras).contains(letra)) {
+            // Adivinó la letra correctamente
+            btnI.setBackground(Color.GREEN); // Cambiar el color del botón al adivinar correctamente
+        } else {
+
+            btnI.setBackground(null);
+        }
 
 
     }//GEN-LAST:event_btnIActionPerformed
 
     private void btnÑActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnÑActionPerformed
-        // TODO add your handling code here:
+        String letra = "Ñ"; // Letra seleccionada 
+
+        Intento(letra);
+        txtArea.setText(juego.Palabra());
+
+        if (Arrays.asList(juego.letras).contains(letra)) {
+            // Adivinó la letra correctamente
+            btnÑ.setBackground(Color.GREEN); // Cambiar el color del botón al adivinar correctamente
+        } else {
+
+            btnÑ.setBackground(null);
+        }
+
+
     }//GEN-LAST:event_btnÑActionPerformed
 
     private void btnRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRActionPerformed
-        Intento("R");
+        String letra = "R"; // Letra seleccionada 
+
+        Intento(letra);
         txtArea.setText(juego.Palabra());
+
+        if (Arrays.asList(juego.letras).contains(letra)) {
+            // Adivinó la letra correctamente
+            btnR.setBackground(Color.GREEN); // Cambiar el color del botón al adivinar correctamente
+        } else {
+
+            btnR.setBackground(null);
+        }
 
 
     }//GEN-LAST:event_btnRActionPerformed
 
     private void btnYActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnYActionPerformed
-        Intento("Y");
+        String letra = "Y"; // Letra seleccionada 
+
+        Intento(letra);
         txtArea.setText(juego.Palabra());
+
+        if (Arrays.asList(juego.letras).contains(letra)) {
+            // Adivinó la letra correctamente
+            btnY.setBackground(Color.GREEN); // Cambiar el color del botón al adivinar correctamente
+        } else {
+
+            btnY.setBackground(null);
+        }
 
 
     }//GEN-LAST:event_btnYActionPerformed
 
     private void btnUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUActionPerformed
-        Intento("U");
+        String letra = "U"; // Letra seleccionada 
+
+        Intento(letra);
         txtArea.setText(juego.Palabra());
+
+        if (Arrays.asList(juego.letras).contains(letra)) {
+            // Adivinó la letra correctamente
+            btnU.setBackground(Color.GREEN); // Cambiar el color del botón al adivinar correctamente
+        } else {
+
+            btnU.setBackground(null);
+        }
 
 
     }//GEN-LAST:event_btnUActionPerformed
@@ -579,127 +644,305 @@ public final class Form extends javax.swing.JFrame {
 
     private void btnAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAActionPerformed
 
-        Intento("A");
+        String letra = "A"; // Letra seleccionada 
+
+        Intento(letra);
         txtArea.setText(juego.Palabra());
+
+        if (Arrays.asList(juego.letras).contains(letra)) {
+            // Adivinó la letra correctamente
+            btnA.setBackground(Color.GREEN); // Cambiar el color del botón al adivinar correctamente
+        } else {
+
+            btnA.setBackground(null);
+        }
 
 
     }//GEN-LAST:event_btnAActionPerformed
 
     private void btnCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCActionPerformed
-        Intento("C");
+        String letra = "C"; // Letra seleccionada 
+
+        Intento(letra);
         txtArea.setText(juego.Palabra());
+
+        if (Arrays.asList(juego.letras).contains(letra)) {
+            // Adivinó la letra correctamente
+            btnC.setBackground(Color.GREEN); // Cambiar el color del botón al adivinar correctamente
+        } else {
+
+            btnC.setBackground(null);
+        }
 
 
     }//GEN-LAST:event_btnCActionPerformed
 
     private void btnDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDActionPerformed
-        Intento("D");
+        String letra = "D"; // Letra seleccionada 
+
+        Intento(letra);
         txtArea.setText(juego.Palabra());
+
+        if (Arrays.asList(juego.letras).contains(letra)) {
+            // Adivinó la letra correctamente
+            btnD.setBackground(Color.GREEN); // Cambiar el color del botón al adivinar correctamente
+        } else {
+
+            btnD.setBackground(null);
+        }
 
 
     }//GEN-LAST:event_btnDActionPerformed
 
     private void btnEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEActionPerformed
-        Intento("E");
+        String letra = "E"; // Letra seleccionada 
+
+        Intento(letra);
         txtArea.setText(juego.Palabra());
 
+        if (Arrays.asList(juego.letras).contains(letra)) {
+            // Adivinó la letra correctamente
+            btnE.setBackground(Color.GREEN); // Cambiar el color del botón al adivinar correctamente
+        } else {
+
+            btnE.setBackground(null);
+        }
 
     }//GEN-LAST:event_btnEActionPerformed
 
     private void btnFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFActionPerformed
-        Intento("F");
+        String letra = "F"; // Letra seleccionada 
+
+        Intento(letra);
         txtArea.setText(juego.Palabra());
+
+        if (Arrays.asList(juego.letras).contains(letra)) {
+            // Adivinó la letra correctamente
+            btnF.setBackground(Color.GREEN); // Cambiar el color del botón al adivinar correctamente
+        } else {
+
+            btnF.setBackground(null);
+        }
 
 
     }//GEN-LAST:event_btnFActionPerformed
 
     private void btnOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOActionPerformed
-        Intento("O");
+        String letra = "O"; // Letra seleccionada 
+
+        Intento(letra);
         txtArea.setText(juego.Palabra());
+
+        if (Arrays.asList(juego.letras).contains(letra)) {
+            // Adivinó la letra correctamente
+            btnO.setBackground(Color.GREEN); // Cambiar el color del botón al adivinar correctamente
+        } else {
+
+            btnO.setBackground(null);
+        }
 
 
     }//GEN-LAST:event_btnOActionPerformed
 
     private void btnJActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJActionPerformed
-        Intento("J");
+        String letra = "J"; // Letra seleccionada 
+
+        Intento(letra);
         txtArea.setText(juego.Palabra());
+
+        if (Arrays.asList(juego.letras).contains(letra)) {
+            // Adivinó la letra correctamente
+            btnJ.setBackground(Color.GREEN); // Cambiar el color del botón al adivinar correctamente
+        } else {
+
+            btnJ.setBackground(null);
+        }
 
 
     }//GEN-LAST:event_btnJActionPerformed
 
     private void btnHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHActionPerformed
-        Intento("H");
+        String letra = "H"; // Letra seleccionada 
+
+        Intento(letra);
         txtArea.setText(juego.Palabra());
 
+        if (Arrays.asList(juego.letras).contains(letra)) {
+            // Adivinó la letra correctamente
+            btnH.setBackground(Color.GREEN); // Cambiar el color del botón al adivinar correctamente
+        } else {
+
+            btnH.setBackground(null);
+        }
 
     }//GEN-LAST:event_btnHActionPerformed
 
     private void btnKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKActionPerformed
-        Intento("K");
+        String letra = "K"; // Letra seleccionada 
+
+        Intento(letra);
         txtArea.setText(juego.Palabra());
+
+        if (Arrays.asList(juego.letras).contains(letra)) {
+            // Adivinó la letra correctamente
+            btnK.setBackground(Color.GREEN); // Cambiar el color del botón al adivinar correctamente
+        } else {
+
+            btnK.setBackground(null);
+        }
 
 
     }//GEN-LAST:event_btnKActionPerformed
 
     private void btnLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLActionPerformed
-        Intento("L");
+        String letra = "L"; // Letra seleccionada 
+
+        Intento(letra);
         txtArea.setText(juego.Palabra());
+
+        if (Arrays.asList(juego.letras).contains(letra)) {
+            // Adivinó la letra correctamente
+            btnL.setBackground(Color.GREEN); // Cambiar el color del botón al adivinar correctamente
+        } else {
+
+            btnL.setBackground(null);
+        }
 
 
     }//GEN-LAST:event_btnLActionPerformed
 
     private void btnMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMActionPerformed
-        Intento("M");
+        String letra = "M"; // Letra seleccionada 
+
+        Intento(letra);
         txtArea.setText(juego.Palabra());
+
+        if (Arrays.asList(juego.letras).contains(letra)) {
+            // Adivinó la letra correctamente
+            btnM.setBackground(Color.GREEN); // Cambiar el color del botón al adivinar correctamente
+        } else {
+
+            btnM.setBackground(null);
+        }
 
 
     }//GEN-LAST:event_btnMActionPerformed
 
     private void btnNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNActionPerformed
-        Intento("N");
+        String letra = "N"; // Letra seleccionada 
+
+        Intento(letra);
         txtArea.setText(juego.Palabra());
+
+        if (Arrays.asList(juego.letras).contains(letra)) {
+            // Adivinó la letra correctamente
+            btnN.setBackground(Color.GREEN); // Cambiar el color del botón al adivinar correctamente
+        } else {
+
+            btnN.setBackground(null);
+        }
 
 
     }//GEN-LAST:event_btnNActionPerformed
 
     private void btnPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPActionPerformed
-        Intento("P");
+        String letra = "P"; // Letra seleccionada 
+
+        Intento(letra);
         txtArea.setText(juego.Palabra());
+
+        if (Arrays.asList(juego.letras).contains(letra)) {
+            // Adivinó la letra correctamente
+            btnP.setBackground(Color.GREEN); // Cambiar el color del botón al adivinar correctamente
+        } else {
+
+            btnP.setBackground(null);
+        }
 
 
     }//GEN-LAST:event_btnPActionPerformed
 
     private void btnQActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQActionPerformed
-        Intento("Q");
+        String letra = "Q"; // Letra seleccionada 
+
+        Intento(letra);
         txtArea.setText(juego.Palabra());
+
+        if (Arrays.asList(juego.letras).contains(letra)) {
+            // Adivinó la letra correctamente
+            btnQ.setBackground(Color.GREEN); // Cambiar el color del botón al adivinar correctamente
+        } else {
+
+            btnQ.setBackground(null);
+        }
 
 
     }//GEN-LAST:event_btnQActionPerformed
 
     private void btnSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSActionPerformed
-        Intento("S");
+        String letra = "S"; // Letra seleccionada 
+
+        Intento(letra);
         txtArea.setText(juego.Palabra());
+
+        if (Arrays.asList(juego.letras).contains(letra)) {
+            // Adivinó la letra correctamente
+            btnS.setBackground(Color.GREEN); // Cambiar el color del botón al adivinar correctamente
+        } else {
+
+            btnS.setBackground(null);
+        }
 
 
     }//GEN-LAST:event_btnSActionPerformed
 
     private void btnTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTActionPerformed
-        Intento("T");
+        String letra = "T"; // Letra seleccionada 
+
+        Intento(letra);
         txtArea.setText(juego.Palabra());
+
+        if (Arrays.asList(juego.letras).contains(letra)) {
+            // Adivinó la letra correctamente
+            btnT.setBackground(Color.GREEN); // Cambiar el color del botón al adivinar correctamente
+        } else {
+
+            btnT.setBackground(null);
+        }
 
 
     }//GEN-LAST:event_btnTActionPerformed
 
     private void btnVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVActionPerformed
-        Intento("V");
+        String letra = "V"; // Letra seleccionada 
+
+        Intento(letra);
         txtArea.setText(juego.Palabra());
+
+        if (Arrays.asList(juego.letras).contains(letra)) {
+            // Adivinó la letra correctamente
+            btnV.setBackground(Color.GREEN); // Cambiar el color del botón al adivinar correctamente
+        } else {
+
+            btnV.setBackground(null);
+        }
 
 
     }//GEN-LAST:event_btnVActionPerformed
 
     private void btnGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGActionPerformed
-        Intento("G");
+        String letra = "G"; // Letra seleccionada 
+
+        Intento(letra);
         txtArea.setText(juego.Palabra());
+
+        if (Arrays.asList(juego.letras).contains(letra)) {
+            // Adivinó la letra correctamente
+            btnG.setBackground(Color.GREEN); // Cambiar el color del botón al adivinar correctamente
+        } else {
+
+            btnG.setBackground(null);
+        }
 
 
     }//GEN-LAST:event_btnGActionPerformed
@@ -719,6 +962,7 @@ public final class Form extends javax.swing.JFrame {
 
         icono = new ImageIcon(sprites[0]);
         ahorcado.setIcon(icono);
+
         pistaSelect = false;
 
 
@@ -735,12 +979,14 @@ public final class Form extends javax.swing.JFrame {
                 if (juego.intentoActual > 0 && juego.pila.size() > 1) {
 
                     juego.pila.pop();
-                    juego.letras = juego.pila.peek();
+                    juego.letras = juego.pila.peek().clone();
                     txtArea.setText(juego.Palabra());
 
                     juego.intentoActual--;
                     icono = new ImageIcon(sprites[juego.intentoActual]);
                     ahorcado.setIcon(icono);
+
+                    System.out.println("Pila retrocedida: " + juego.PrintPila());
 
                 } else {
                     JOptionPane.showMessageDialog(null, "No puede retroceder mas", "Error", JOptionPane.ERROR_MESSAGE);
@@ -751,22 +997,52 @@ public final class Form extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRetrocederActionPerformed
 
     private void btnZActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnZActionPerformed
-        Intento("Z");
+        String letra = "Z"; // Letra seleccionada 
+
+        Intento(letra);
         txtArea.setText(juego.Palabra());
+
+        if (Arrays.asList(juego.letras).contains(letra)) {
+            // Adivinó la letra correctamente
+            btnZ.setBackground(Color.GREEN); // Cambiar el color del botón al adivinar correctamente
+        } else {
+
+            btnZ.setBackground(null);
+        }
 
 
     }//GEN-LAST:event_btnZActionPerformed
 
     private void btnWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnWActionPerformed
-        Intento("W");
+        String letra = "W"; // Letra seleccionada 
+
+        Intento(letra);
         txtArea.setText(juego.Palabra());
+
+        if (Arrays.asList(juego.letras).contains(letra)) {
+            // Adivinó la letra correctamente
+            btnW.setBackground(Color.GREEN); // Cambiar el color del botón al adivinar correctamente
+        } else {
+
+            btnW.setBackground(null);
+        }
 
 
     }//GEN-LAST:event_btnWActionPerformed
 
     private void btnXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXActionPerformed
-        Intento("X");
+        String letra = "X"; // Letra seleccionada 
+
+        Intento(letra);
         txtArea.setText(juego.Palabra());
+
+        if (Arrays.asList(juego.letras).contains(letra)) {
+            // Adivinó la letra correctamente
+            btnX.setBackground(Color.GREEN); // Cambiar el color del botón al adivinar correctamente
+        } else {
+
+            btnX.setBackground(null);
+        }
 
 
     }//GEN-LAST:event_btnXActionPerformed
@@ -878,6 +1154,7 @@ public final class Form extends javax.swing.JFrame {
         } else {
             if (Arrays.equals(juego.palabraAux, juego.letras)) {
                 JOptionPane.showMessageDialog(null, "Ganaste!", "Felicidades", JOptionPane.INFORMATION_MESSAGE);
+
             }
         }
 
