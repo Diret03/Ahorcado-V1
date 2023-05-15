@@ -46,9 +46,6 @@ public final class Form extends javax.swing.JFrame {
             boton.setEnabled(false);
         }
 
-//        juego = new Ahorcado();
-//        juego.Inicio();
-//        txtArea.setText(juego.Palabra());
         lblAyuda.setVisible(false);
         lblPista.setVisible(false);
 
@@ -65,6 +62,10 @@ public final class Form extends javax.swing.JFrame {
 
             icono = new ImageIcon(sprites[0]);
             ahorcado.setIcon(icono);
+            
+            ImageIcon formLogo = new ImageIcon("icono.png");
+            setIconImage(formLogo.getImage());
+   
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -120,6 +121,7 @@ public final class Form extends javax.swing.JFrame {
         jMenuItem1.setText("jMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Juego del Ahorcado");
 
         btnG.setFont(new java.awt.Font("Courier New", 0, 24)); // NOI18N
         btnG.setText("G");
@@ -382,7 +384,7 @@ public final class Form extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(74, 74, 74)
+                .addGap(80, 80, 80)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -438,7 +440,7 @@ public final class Form extends javax.swing.JFrame {
                                 .addComponent(btnM, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnN, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(144, Short.MAX_VALUE))
+                        .addContainerGap(138, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(ahorcado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(35, 35, 35)
@@ -721,7 +723,12 @@ public final class Form extends javax.swing.JFrame {
 
         icono = new ImageIcon(sprites[0]);
         ahorcado.setIcon(icono);
+        
+        
+   
+        
         pistaSelect = false;
+        
 
 
     }//GEN-LAST:event_btnIniciarActionPerformed
