@@ -13,6 +13,7 @@ import java.util.Random;
 import javax.imageio.ImageIO;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
@@ -28,20 +29,25 @@ public final class Form extends javax.swing.JFrame {
     int numIntentosMAX = 7;
     boolean pistaSelect = false;
     private static Form instance = null;
-    
-    
-    
-    private Form() {
-        initComponents();     
-        
+
+    public Form() {
+        initComponents();
+        // Crear un arreglo de botones de letras
+        JButton[] botonesLetras = {btnA, btnB, btnC, btnD, btnE, btnF, btnG, btnH, btnI, btnK, btnL, btnM, btnN, btnO, btnP, btnQ, btnR, btnS, btnT, btnU, btnW, btnX, btnY, btnZ, btnJ, btnÑ, btnV};
+
+// Deshabilitar los botones de letras
+        for (JButton boton : botonesLetras) {
+            boton.setEnabled(false);
+        }
+
         juego = new Ahorcado();
         juego.Inicio();
         txtArea.setText(juego.Palabra());
         lblAyuda.setVisible(false);
         lblPista.setVisible(false);
-       
+
         try {
-            
+
             sprites = new BufferedImage[7];
             sprites[0] = ImageIO.read(new File("sprites/1.png"));
             sprites[1] = ImageIO.read(new File("sprites/2.png"));
@@ -50,14 +56,13 @@ public final class Form extends javax.swing.JFrame {
             sprites[4] = ImageIO.read(new File("sprites/5.png"));
             sprites[5] = ImageIO.read(new File("sprites/6.png"));
             sprites[6] = ImageIO.read(new File("sprites/7.png"));
-            
 
             icono = new ImageIcon(sprites[0]);
             ahorcado.setIcon(icono);
-            
+
         } catch (Exception e) {
             System.out.println(e.getMessage());
-        }      
+        }
     }
 
     /**
@@ -84,7 +89,7 @@ public final class Form extends javax.swing.JFrame {
         btnL = new javax.swing.JButton();
         btnR = new javax.swing.JButton();
         btnN = new javax.swing.JButton();
-        jButton15 = new javax.swing.JButton();
+        btnÑ = new javax.swing.JButton();
         btnO = new javax.swing.JButton();
         btnP = new javax.swing.JButton();
         btnQ = new javax.swing.JButton();
@@ -222,11 +227,11 @@ public final class Form extends javax.swing.JFrame {
             }
         });
 
-        jButton15.setFont(new java.awt.Font("Courier New", 0, 24)); // NOI18N
-        jButton15.setText("Ñ");
-        jButton15.addActionListener(new java.awt.event.ActionListener() {
+        btnÑ.setFont(new java.awt.Font("Courier New", 0, 24)); // NOI18N
+        btnÑ.setText("Ñ");
+        btnÑ.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton15ActionPerformed(evt);
+                btnÑActionPerformed(evt);
             }
         });
 
@@ -376,7 +381,7 @@ public final class Form extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnÑ, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnO, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -490,7 +495,7 @@ public final class Form extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnR, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnÑ, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnO, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnP, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnQ, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -520,40 +525,39 @@ public final class Form extends javax.swing.JFrame {
         Intento("B");
         txtArea.setText(juego.Palabra());
 
-        
- 
+
     }//GEN-LAST:event_btnBActionPerformed
 
     private void btnIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIActionPerformed
         Intento("I");
         txtArea.setText(juego.Palabra());
 
-   
+
     }//GEN-LAST:event_btnIActionPerformed
 
-    private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
+    private void btnÑActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnÑActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton15ActionPerformed
+    }//GEN-LAST:event_btnÑActionPerformed
 
     private void btnRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRActionPerformed
         Intento("R");
         txtArea.setText(juego.Palabra());
 
- 
+
     }//GEN-LAST:event_btnRActionPerformed
 
     private void btnYActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnYActionPerformed
         Intento("Y");
         txtArea.setText(juego.Palabra());
 
-   
+
     }//GEN-LAST:event_btnYActionPerformed
 
     private void btnUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUActionPerformed
         Intento("U");
         txtArea.setText(juego.Palabra());
 
-   
+
     }//GEN-LAST:event_btnUActionPerformed
 
     private void btnAyudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAyudaActionPerformed
@@ -561,26 +565,25 @@ public final class Form extends javax.swing.JFrame {
         if (juego != null) {
             lblAyuda.setVisible(true);
             lblAyuda.setText(Arrays.toString(juego.palabraAux));
+        } else {
+            JOptionPane.showMessageDialog(null, "Ni siquiera ha empezado el juego...", "Error", JOptionPane.ERROR_MESSAGE);
         }
-        else
-            JOptionPane.showMessageDialog(null, "Ni siquiera ha empezado el juego...", "Error",JOptionPane.ERROR_MESSAGE);
-              
+
     }//GEN-LAST:event_btnAyudaActionPerformed
 
     private void btnAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAActionPerformed
-        
+
         Intento("A");
         txtArea.setText(juego.Palabra());
- 
-  
-     
+
+
     }//GEN-LAST:event_btnAActionPerformed
 
     private void btnCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCActionPerformed
         Intento("C");
         txtArea.setText(juego.Palabra());
 
-    
+
     }//GEN-LAST:event_btnCActionPerformed
 
     private void btnDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDActionPerformed
@@ -594,140 +597,136 @@ public final class Form extends javax.swing.JFrame {
         Intento("E");
         txtArea.setText(juego.Palabra());
 
-      
+
     }//GEN-LAST:event_btnEActionPerformed
 
     private void btnFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFActionPerformed
         Intento("F");
         txtArea.setText(juego.Palabra());
-  
-      
+
+
     }//GEN-LAST:event_btnFActionPerformed
 
     private void btnOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOActionPerformed
         Intento("O");
         txtArea.setText(juego.Palabra());
-   
-       
+
+
     }//GEN-LAST:event_btnOActionPerformed
 
     private void btnJActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJActionPerformed
         Intento("J");
         txtArea.setText(juego.Palabra());
 
-     
+
     }//GEN-LAST:event_btnJActionPerformed
 
     private void btnHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHActionPerformed
         Intento("H");
         txtArea.setText(juego.Palabra());
-   
-    
+
+
     }//GEN-LAST:event_btnHActionPerformed
 
     private void btnKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKActionPerformed
         Intento("K");
         txtArea.setText(juego.Palabra());
- 
-  
+
+
     }//GEN-LAST:event_btnKActionPerformed
 
     private void btnLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLActionPerformed
         Intento("L");
         txtArea.setText(juego.Palabra());
-    
-    
+
+
     }//GEN-LAST:event_btnLActionPerformed
 
     private void btnMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMActionPerformed
         Intento("M");
         txtArea.setText(juego.Palabra());
-     
-  
+
+
     }//GEN-LAST:event_btnMActionPerformed
 
     private void btnNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNActionPerformed
         Intento("N");
         txtArea.setText(juego.Palabra());
-   
- 
+
+
     }//GEN-LAST:event_btnNActionPerformed
 
     private void btnPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPActionPerformed
         Intento("P");
         txtArea.setText(juego.Palabra());
 
-   
+
     }//GEN-LAST:event_btnPActionPerformed
 
     private void btnQActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQActionPerformed
         Intento("Q");
         txtArea.setText(juego.Palabra());
 
-  
+
     }//GEN-LAST:event_btnQActionPerformed
 
     private void btnSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSActionPerformed
         Intento("S");
         txtArea.setText(juego.Palabra());
- 
-   
+
+
     }//GEN-LAST:event_btnSActionPerformed
 
     private void btnTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTActionPerformed
         Intento("T");
         txtArea.setText(juego.Palabra());
-   
-   
+
+
     }//GEN-LAST:event_btnTActionPerformed
 
     private void btnVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVActionPerformed
         Intento("V");
         txtArea.setText(juego.Palabra());
- 
-   
+
+
     }//GEN-LAST:event_btnVActionPerformed
 
     private void btnGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGActionPerformed
         Intento("G");
         txtArea.setText(juego.Palabra());
-  
+
 
     }//GEN-LAST:event_btnGActionPerformed
 
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
-      
-       
-       lblAyuda.setVisible(false);
-       lblPista.setVisible(false);
-       juego = new Ahorcado();
-       juego.Inicio();
-       txtArea.setText(juego.Palabra());
+        JButton[] botonesLetras = {btnA, btnB, btnC, btnD, btnE, btnF, btnG, btnH, btnI, btnK, btnL, btnM, btnN, btnO, btnP, btnQ, btnR, btnS, btnT, btnU, btnW, btnX, btnY, btnZ, btnJ, btnÑ, btnV};
+
+// Habilitar los botones de letras
+        for (JButton boton : botonesLetras) {
+            boton.setEnabled(true);
+        }
+        lblAyuda.setVisible(false);
+        lblPista.setVisible(false);
+        juego = new Ahorcado();
+        juego.Inicio();
+        txtArea.setText(juego.Palabra());
 
         icono = new ImageIcon(sprites[0]);
         ahorcado.setIcon(icono);
         pistaSelect = false;
-       
-         
-        
-       
+
+
     }//GEN-LAST:event_btnIniciarActionPerformed
 
     private void btnRetrocederActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRetrocederActionPerformed
 
-        if (Arrays.equals(juego.palabraAux, juego.letras))
-        {
+        if (Arrays.equals(juego.palabraAux, juego.letras)) {
             JOptionPane.showMessageDialog(null, "No se puede retroceder, ya ganaste...", "Error", JOptionPane.ERROR_MESSAGE);
-        }
-        else {
-            if (juego.intentoActual == numIntentosMAX) 
-            {
+        } else {
+            if (juego.intentoActual == numIntentosMAX) {
                 JOptionPane.showMessageDialog(null, "No se puede retroceder, ya perdiste...", "Error", JOptionPane.ERROR_MESSAGE);
-            }
-            else 
-            {
-                if (juego.intentoActual > 0 && juego.pila.size() > 1) 
-                {
+            } else {
+                if (juego.intentoActual > 0 && juego.pila.size() > 1) {
 
                     juego.pila.pop();
                     juego.letras = juego.pila.peek();
@@ -742,43 +741,42 @@ public final class Form extends javax.swing.JFrame {
                 }
             }
         }
-      
+
     }//GEN-LAST:event_btnRetrocederActionPerformed
 
     private void btnZActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnZActionPerformed
         Intento("Z");
         txtArea.setText(juego.Palabra());
-     
+
 
     }//GEN-LAST:event_btnZActionPerformed
 
     private void btnWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnWActionPerformed
         Intento("W");
         txtArea.setText(juego.Palabra());
-      
-     
+
+
     }//GEN-LAST:event_btnWActionPerformed
 
     private void btnXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXActionPerformed
         Intento("X");
         txtArea.setText(juego.Palabra());
-        
-  
+
+
     }//GEN-LAST:event_btnXActionPerformed
 
     private void btnPistaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPistaActionPerformed
-        
-        if (juego!=null) {
-            
+
+        if (juego != null) {
+
             if (!pistaSelect) {
-                
+
                 Random random = new Random();
-                String[] pista = (String[])juego.pila.peek().clone();
+                String[] pista = (String[]) juego.pila.peek().clone();
                 int numExcluido = 0;
-                
-                
+
                 for (int i = 0; i < pista.length; i++) {
-                    
+
                     if (pista[i] != null) {
                         numExcluido = i;
                         break;
@@ -786,22 +784,21 @@ public final class Form extends javax.swing.JFrame {
                 }
 
                 int indiceRandom;
-                
+
                 do {
                     indiceRandom = random.nextInt(pista.length) + 0;
-                } while (indiceRandom  == numExcluido);
-                
-                         
+                } while (indiceRandom == numExcluido);
+
                 for (int i = 0; i < pista.length; i++) {
-                    
+
                     if (!juego.palabraAux[indiceRandom].equals(pista[i])) {
-                        
+
                         pista[indiceRandom] = juego.palabraAux[indiceRandom];
                         break;
-                        
-                    }               
-                }    
-                
+
+                    }
+                }
+
                 lblPista.setVisible(true);
                 lblPista.setText(juego.Palabra(pista));
                 pistaSelect = true;
@@ -843,19 +840,16 @@ public final class Form extends javax.swing.JFrame {
             }
         });
     }
-    
+
     public static Form getInstance() {
         if (instance == null) {
             instance = new Form();
         }
         return instance;
     }
-    
-    
-    public void Intento(String letra)
-    {   
 
-  
+    public void Intento(String letra) {
+
         boolean encontrado = false;
         for (int i = 0; i < juego.letras.length; i++) {
             if (juego.palabraAux[i].equals(letra)) {
@@ -871,9 +865,7 @@ public final class Form extends javax.swing.JFrame {
             if (juego.intentoActual == numIntentosMAX) {
                 JOptionPane.showMessageDialog(null, "Perdiste! La palabra era: " + juego.StringArray(juego.palabraAux), "Fin", JOptionPane.ERROR_MESSAGE);
 
-            }
-            else
-            {
+            } else {
                 icono = new ImageIcon(sprites[juego.intentoActual]);
                 ahorcado.setIcon(icono);
             }
@@ -882,20 +874,17 @@ public final class Form extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Ganaste!", "Felicidades", JOptionPane.INFORMATION_MESSAGE);
             }
         }
-        
+
         //Comprobar si ultimo elemento de la pila no coincide con el estado actual de letras, para que asi no haya elementos repetidos en la pila
         if (!Arrays.equals(juego.letras.clone(), juego.pila.peek())) {
-           juego.pila.push(juego.letras.clone());  //se usa el metodo clone para obtener el estado actual del juego
+            juego.pila.push(juego.letras.clone());  //se usa el metodo clone para obtener el estado actual del juego
         }
 
         System.out.println("Pila: " + juego.PrintPila());
-                   
+
     }
 
 
-
-
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JLabel ahorcado;
     private javax.swing.JButton btnA;
@@ -928,7 +917,7 @@ public final class Form extends javax.swing.JFrame {
     private javax.swing.JButton btnX;
     private javax.swing.JButton btnY;
     private javax.swing.JButton btnZ;
-    private javax.swing.JButton jButton15;
+    private javax.swing.JButton btnÑ;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JLabel lblAyuda;
     private javax.swing.JLabel lblPista;
