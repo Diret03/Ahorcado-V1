@@ -2,7 +2,6 @@
 package paquete;
 
 /**
- *
  * @author diego
  */
 public class Pila {
