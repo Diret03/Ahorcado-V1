@@ -530,35 +530,15 @@ public final class Form extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBActionPerformed
-        String letra = "B"; // Letra seleccionada 
-
-        Intento(letra);
+        Intento("B", btnB);
         txtArea.setText(juego.Palabra());
-
-        if (Arrays.asList(juego.letras).contains(letra)) {
-            // Adivinó la letra correctamente
-            btnB.setBackground(Color.GREEN); // Cambiar el color del botón al adivinar correctamente
-        } else {
-
-            btnB.setBackground(null);
-        }
 
 
     }//GEN-LAST:event_btnBActionPerformed
 
     private void btnIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIActionPerformed
-        String letra = "I"; // Letra seleccionada 
-
-        Intento(letra);
+        Intento("I", btnI);
         txtArea.setText(juego.Palabra());
-
-        if (Arrays.asList(juego.letras).contains(letra)) {
-            // Adivinó la letra correctamente
-            btnI.setBackground(Color.GREEN); // Cambiar el color del botón al adivinar correctamente
-        } else {
-
-            btnI.setBackground(null);
-        }
 
 
     }//GEN-LAST:event_btnIActionPerformed
