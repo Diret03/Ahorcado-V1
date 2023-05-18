@@ -8,6 +8,7 @@ import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import javax.sound.sampled.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
@@ -728,17 +729,19 @@ public final class Form extends javax.swing.JFrame {
             if (juego.intentoActual == numIntentosMAX) {
                 JOptionPane.showMessageDialog(null, "No se puede retroceder, ya perdiste...", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
-                if (juego.intentoActual > 0 && juego.pila.size() > 1) {
+                if (juego.intentoActual > 0) {
 
-                    juego.pila.pop();
-                    juego.letras = juego.pila.peek().clone();
-                    txtArea.setText(juego.Palabra());
-
+                    if (juego.pila.Size() > 1) {
+                        juego.pila.Desapilar();
+                        juego.letras = ((String[]) juego.pila.Peek()).clone();
+                        txtArea.setText(juego.Palabra());
+                        System.out.println("Pila retrocedida: " + juego.PrintPila());
+                    }
+                  
                     juego.intentoActual--;
                     icono = new ImageIcon(sprites[juego.intentoActual]);
                     ahorcado.setIcon(icono);
-
-                    System.out.println("Pila retrocedida: " + juego.PrintPila());
+                 
 
                 } else {
                     JOptionPane.showMessageDialog(null, "No puede retroceder mas", "Error", JOptionPane.ERROR_MESSAGE);
@@ -773,7 +776,7 @@ public final class Form extends javax.swing.JFrame {
             if (!pistaSelect) {
 
                 Random random = new Random();
-                String[] pista = (String[]) juego.pila.peek().clone();
+                String[] pista = ((String[]) juego.pila.Peek()).clone();
                 int numExcluido = 0;
 
                 for (int i = 0; i < pista.length; i++) {
@@ -880,8 +883,8 @@ public final class Form extends javax.swing.JFrame {
         }
 
         //Comprobar si ultimo elemento de la pila no coincide con el estado actual de letras, para que asi no haya elementos repetidos en la pila
-        if (!Arrays.equals(juego.letras.clone(), juego.pila.peek())) {
-            juego.pila.push(juego.letras.clone());  //se usa el metodo clone para obtener el estado actual del juego
+        if (!Arrays.equals(juego.letras.clone(), (String[])juego.pila.Peek())) {
+            juego.pila.Apilar(juego.letras.clone());  //se usa el metodo clone para obtener el estado actual del juego
         }
 
         System.out.println("Pila: " + juego.PrintPila());
@@ -916,19 +919,23 @@ public final class Form extends javax.swing.JFrame {
         } else {
             btn.setBackground(Color.GREEN);
             if (Arrays.equals(juego.palabraAux, juego.letras)) {
+              
                 JOptionPane.showMessageDialog(null, "Ganaste!", "Felicidades", JOptionPane.INFORMATION_MESSAGE);
+                
 
             }
         }
 
         //Comprobar si ultimo elemento de la pila no coincide con el estado actual de letras, para que asi no haya elementos repetidos en la pila
-        if (!Arrays.equals(juego.letras.clone(), juego.pila.peek())) {
-            juego.pila.push(juego.letras.clone());  //se usa el metodo clone para obtener el estado actual del juego
+        if (!Arrays.equals(juego.letras.clone(), (String[])juego.pila.Peek())) {
+            juego.pila.Apilar(juego.letras.clone());  //se usa el metodo clone para obtener el estado actual del juego
         }
 
         System.out.println("Pila: " + juego.PrintPila());
 
     }
+      
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -26,7 +26,7 @@ public class Ahorcado {
     private ArrayList<String> palabras;
     public String[] letras;  //arreglo de String que almacena el juego como tal, dicho arreglo se llenara de letra en letra hasta adivinar toda la palabra
     String[] palabraAux;  //arreglo de String para almacenar palabra a adivinar
-    public Stack<String[]> pila;  //uso de pila de Java, no use la clase Pila creada en clases debido a la limitacion de tama?o
+    public Pila pila;  //uso de pila de Java, no use la clase Pila creada en clases debido a la limitacion de tama?o
     public int intentoActual = 0;
 
     
@@ -37,7 +37,7 @@ public class Ahorcado {
     public Ahorcado() 
     {
         palabras = new ArrayList<>();
-        pila = new Stack<>();
+       
         //this.intentoActual = intentoActual;
            
         //try y catch para leer archivo de texto que contiene 50 palabras, dichas palabras seran almacenadas en una arraylist
@@ -66,13 +66,14 @@ public class Ahorcado {
     public void Inicio()  //metodo para asignar una letra aleatoria en una posicion aleatoria en el arreglo de letras, basandose en la palabra a adivinar
     {
         palabraAux = PalabraRandom().split("");  
+        pila = new Pila(palabraAux.length);
         letras = new String[palabraAux.length];
       
         
         Random ran = new Random();
         int indiceRandom = ran.nextInt(letras.length);
         letras[indiceRandom] = palabraAux[indiceRandom];
-        pila.push(letras.clone());
+        pila.Apilar(letras.clone());
          System.out.println("Pila inicial:\n"+PrintPila());
         
         //System.out.println(this.StringArray(letras));
@@ -82,7 +83,7 @@ public class Ahorcado {
     public String Palabra()
     {
         
-        String[] operacion = pila.peek();  
+        String[] operacion = (String[]) pila.Peek();  
         String r = "";
                  
         for (int i = 0; i < letras.length; i++) {
@@ -122,22 +123,24 @@ public class Ahorcado {
     public String PrintPila() //metodo de ayuda para ver el estado de la pila
     {
         String r = "";
-        for (int i = 0; i < pila.size(); i++) {
+        for (int i = 0; i < pila.Size(); i++) {
             
-            if (pila.get(i) instanceof String[]) {
+            if (pila.A[i] instanceof String[]) {
                 
-                String[] aux = (String[])pila.get(i);
+                String[] aux = (String[])pila.A[i];
                 r+= this.StringArray(aux) + "\n";
             }
             else
-                r+=pila.get(i)+ "\n";
+                r+=pila.A[i]+ "\n";
         }
         return r;
     }
 
-    public int getIntentos() {
+    public int getIntentoActual() {
         return intentoActual;
     }
+    
+ 
 
 
     

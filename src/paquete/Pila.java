@@ -8,19 +8,20 @@ public class Pila {
     
     private int numElementos;
     private int tam;
-    private Object[] A;
+    public Object[] A;
+
 
     public Pila(int tam)
     {
       this.tam = tam;
       numElementos = 0;
       A = new Object[tam];
-        
+  
     }
 
-    public int Tamanio()
+    public int Size()
     {
-        return this.A.length;
+        return this.numElementos;
     }
     
     public boolean Llena()
@@ -46,6 +47,7 @@ public class Pila {
         if (!Llena()) {
             A[numElementos] = elemento;
             numElementos++;
+        
         } 
 
     }
