@@ -18,6 +18,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import java.applet.AudioClip;
 
 /**
  *
@@ -31,7 +32,8 @@ public final class Form extends javax.swing.JFrame {
     int numIntentosMAX = 7;
     boolean pistaSelect = false;
     String[] pista;
-  
+    private AudioClip sonidoCorrecto;
+    private AudioClip sonidoIncorrecto;
 
     public Form() {
         initComponents();
@@ -53,10 +55,10 @@ public final class Form extends javax.swing.JFrame {
         lblPista.setVisible(false);
 
         try {
-             
+
             /*Se utiliza el paquete ImageIO de Java para leer las imagenes almacenadas en la carpeta sprites del proyecto, cada sprite se almacena 
             en un arreglo de sprites tipo BufferedImage
-            */
+             */
             sprites = new BufferedImage[7];
             sprites[0] = ImageIO.read(new File("sprites/1.png"));
             sprites[1] = ImageIO.read(new File("sprites/2.png"));
@@ -71,10 +73,12 @@ public final class Form extends javax.swing.JFrame {
 
             ImageIcon formLogo = new ImageIcon("icono.png");    //se lee el icono de la aplicacion
             setIconImage(formLogo.getImage());                    //se establece el icono del formulario
- 
+
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+        sonidoCorrecto = java.applet.Applet.newAudioClip(getClass().getResource("/Sonidos/ClickExcelente.wav"));
+        sonidoIncorrecto = java.applet.Applet.newAudioClip(getClass().getResource("/Sonidos/ClickError.wav"));
     }
 
     /**
@@ -138,6 +142,11 @@ public final class Form extends javax.swing.JFrame {
 
         btnA.setFont(new java.awt.Font("Courier New", 0, 24)); // NOI18N
         btnA.setText("A");
+        btnA.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAMouseClicked(evt);
+            }
+        });
         btnA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAActionPerformed(evt);
@@ -391,47 +400,6 @@ public final class Form extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(80, 80, 80)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(btnÑ, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnO, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnP, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnQ, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnR, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnS, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnT, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(btnU, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(btnV, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(btnIniciar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(btnW, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(btnX, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(btnRetroceder, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(btnY, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(btnZ, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(btnPista, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(btnAyuda, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addContainerGap(138, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(ahorcado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(35, 35, 35)
@@ -458,19 +426,59 @@ public final class Form extends javax.swing.JFrame {
                                 .addComponent(btnG, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnH, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnI, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnJ, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnK, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnL, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnM, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnN, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnÑ, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnO, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnP, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnQ, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnR, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnS, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnT, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(btnU, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(btnV, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(btnIniciar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(btnW, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(btnX, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(btnRetroceder, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(btnY, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(btnZ, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(btnPista, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(btnAyuda, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnH, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnI, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnJ, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnK, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnL, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnM, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnN, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -684,7 +692,7 @@ public final class Form extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSActionPerformed
 
     private void btnTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTActionPerformed
-  
+
         Intento("T", btnT);
         txtArea.setText(juego.Palabra());
 
@@ -698,14 +706,15 @@ public final class Form extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVActionPerformed
 
     private void btnGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGActionPerformed
-  
+
         Intento("G", btnG);
         txtArea.setText(juego.Palabra());
 
     }//GEN-LAST:event_btnGActionPerformed
 
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
-        JButton[] botonesLetras = {btnA, btnB, btnC, btnD, btnE, btnF, btnG, btnH, btnI, btnK, btnL, btnM, btnN, btnO, btnP, btnQ, btnR, btnS, btnT, btnU, btnW, btnX, btnY, btnZ, btnJ, btnÑ, btnV};
+        JButton[] botonesLetras = {btnA, btnB, btnC, btnD, btnE, btnF, btnG, btnH, btnI, btnK, btnL, btnM, btnN, btnO, btnP, btnQ,
+            btnR, btnS, btnT, btnU, btnW, btnX, btnY, btnZ, btnJ, btnÑ, btnV};
 
 // Habilitar los botones de letras
         for (JButton boton : botonesLetras) {
@@ -742,11 +751,10 @@ public final class Form extends javax.swing.JFrame {
                         txtArea.setText(juego.Palabra());
                         System.out.println("Pila retrocedida: " + juego.PrintPila());
                     }
-                  
+
                     juego.intentoActual--;
                     icono = new ImageIcon(sprites[juego.intentoActual]);
                     ahorcado.setIcon(icono);
-                 
 
                 } else {
                     JOptionPane.showMessageDialog(null, "No puede retroceder mas", "Error", JOptionPane.ERROR_MESSAGE);
@@ -791,8 +799,15 @@ public final class Form extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnPistaActionPerformed
 
-    public void Pista()
-    {
+    private void btnAMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAMouseClicked
+        // TODO add your handling code here:
+        AudioClip sonido;
+        sonido = java.applet.Applet.newAudioClip(getClass().getResource("/Sonidos/ClickExcelente.wav"));
+        sonido.play();
+
+    }//GEN-LAST:event_btnAMouseClicked
+
+    public void Pista() {
         Random random = new Random();
         pista = ((String[]) juego.pila.Peek()).clone();
 
@@ -808,7 +823,7 @@ public final class Form extends javax.swing.JFrame {
             }
         }
     }
-  
+
     /**
      * @param args the command line arguments
      */
@@ -844,25 +859,24 @@ public final class Form extends javax.swing.JFrame {
         });
     }
 
- 
-
-    
     /**
      * <h2>Este método realiza un intento del juego</h2>
-     * Recibe como parámetros una cadena llamada letra y un bottón.
-     * La letra recibida se buscará en la palabra a adivinar, si se encuentra se almacenará en la posición correspondiente
-     * en el arreglo de letras, se apilará dicho arreglo y se pintará el botón correspondiente a la letra acertada.
-     * Si no ha sido encotrada la letra, se incrementará el intento Actual y se actualizará el sprite.
-     * Si el arreglo de letras es igual a la palabra a adivinar, el juego se termina.
-     * Si el número de intentos ha llegado a su máximo, el juego termina.
+     * Recibe como parámetros una cadena llamada letra y un bottón. La letra
+     * recibida se buscará en la palabra a adivinar, si se encuentra se
+     * almacenará en la posición correspondiente en el arreglo de letras, se
+     * apilará dicho arreglo y se pintará el botón correspondiente a la letra
+     * acertada. Si no ha sido encotrada la letra, se incrementará el intento
+     * Actual y se actualizará el sprite. Si el arreglo de letras es igual a la
+     * palabra a adivinar, el juego se termina. Si el número de intentos ha
+     * llegado a su máximo, el juego termina.
      *
      * No retorna nada.
      *
-
+     *
      * @param letra
      * @param btn
      */
-      public void Intento(String letra, JButton btn) {
+    public void Intento(String letra, JButton btn) {
 
         boolean encontrado = false;      //variable boolean auxiliar para verificar si se encontró la letra
         for (int i = 0; i < juego.letras.length; i++) {
@@ -872,44 +886,40 @@ public final class Form extends javax.swing.JFrame {
             }
 
         }
- 
 
         if (!encontrado) {     //si la letra NO ha sido encontrada...
 
             juego.intentoActual++;
             if (juego.intentoActual == numIntentosMAX) {
+                sonidoIncorrecto.play();
                 JOptionPane.showMessageDialog(null, "Perdiste! La palabra era: " + juego.StringArray(juego.palabraAux), "Fin", JOptionPane.ERROR_MESSAGE);
 
             } else {
+                sonidoIncorrecto.play();
                 icono = new ImageIcon(sprites[juego.intentoActual]);
                 ahorcado.setIcon(icono);
-                
-                
-        
+
             }
         } else {            //si la letra SI ha sido encontrada...
-            
+
             btn.setBackground(Color.GREEN);                 //se pinta el botón recibido en el parámetro de verde
             if (Arrays.equals(juego.palabraAux, juego.letras)) { //si el arreglo de la palabra a adivinar es igual al arreglo del estado del juego
-                
-                 //se muestra un mensaje de éxito
+                sonidoCorrecto.play();
+                //se muestra un mensaje de éxito
                 JOptionPane.showMessageDialog(null, "Ganaste!", "Felicidades", JOptionPane.INFORMATION_MESSAGE);
-                
 
             }
         }
 
         //Comprobar si ultimo elemento de la pila no coincide con el estado actual de letras, para que asi no haya elementos repetidos en la pila
-        if (!Arrays.equals(juego.letras.clone(), (String[])juego.pila.Peek())) {
+        if (!Arrays.equals(juego.letras.clone(), (String[]) juego.pila.Peek())) {
             juego.pila.Apilar(juego.letras.clone());  //se apila el estado actual del juego
-                                                             //se usa el metodo clone para obtener el estado actual del juego
+            //se usa el metodo clone para obtener el estado actual del juego
         }
 
         System.out.println("Pila: " + juego.PrintPila());
 
     }
-      
-
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
