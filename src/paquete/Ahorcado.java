@@ -139,12 +139,5 @@ public class Ahorcado {
     public int getIntentoActual() {
         return intentoActual;
     }
-    
- 
-
-
-    
-    
-    
-       
+         
 }

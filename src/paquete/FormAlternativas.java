@@ -4,6 +4,7 @@
  */
 package paquete;
 
+import java.awt.Color;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -20,6 +21,8 @@ public class FormAlternativas extends javax.swing.JFrame {
      */
     public FormAlternativas() {
         initComponents();
+        this.getContentPane().setBackground(Color.cyan);
+        
     }
 
     /**
@@ -52,6 +55,11 @@ public class FormAlternativas extends javax.swing.JFrame {
         });
 
         btnSalir.setText("Salir");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -95,6 +103,11 @@ public class FormAlternativas extends javax.swing.JFrame {
                 + " 3.- Intentar persuadir a quien ha escrito la palabra para que te dé pistas ";
         JOptionPane.showMessageDialog(this, instrucciones, "Instrucciones del Juego", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_btnAyudaActionPerformed
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_btnSalirActionPerformed
 
     /**
      * @param args the command line arguments
