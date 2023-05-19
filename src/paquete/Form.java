@@ -132,6 +132,7 @@ public final class Form extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Juego del Ahorcado");
 
+        btnG.setBackground(new java.awt.Color(255, 255, 153));
         btnG.setFont(new java.awt.Font("Courier New", 0, 24)); // NOI18N
         btnG.setText("G");
         btnG.addActionListener(new java.awt.event.ActionListener() {
@@ -140,6 +141,7 @@ public final class Form extends javax.swing.JFrame {
             }
         });
 
+        btnA.setBackground(new java.awt.Color(255, 255, 153));
         btnA.setFont(new java.awt.Font("Courier New", 0, 24)); // NOI18N
         btnA.setText("A");
         btnA.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -153,6 +155,7 @@ public final class Form extends javax.swing.JFrame {
             }
         });
 
+        btnB.setBackground(new java.awt.Color(255, 255, 153));
         btnB.setFont(new java.awt.Font("Courier New", 0, 24)); // NOI18N
         btnB.setText("B");
         btnB.addActionListener(new java.awt.event.ActionListener() {
@@ -161,6 +164,7 @@ public final class Form extends javax.swing.JFrame {
             }
         });
 
+        btnC.setBackground(new java.awt.Color(255, 255, 153));
         btnC.setFont(new java.awt.Font("Courier New", 0, 24)); // NOI18N
         btnC.setText("C");
         btnC.addActionListener(new java.awt.event.ActionListener() {
@@ -169,6 +173,7 @@ public final class Form extends javax.swing.JFrame {
             }
         });
 
+        btnD.setBackground(new java.awt.Color(255, 255, 153));
         btnD.setFont(new java.awt.Font("Courier New", 0, 24)); // NOI18N
         btnD.setText("D");
         btnD.addActionListener(new java.awt.event.ActionListener() {
@@ -177,6 +182,7 @@ public final class Form extends javax.swing.JFrame {
             }
         });
 
+        btnF.setBackground(new java.awt.Color(255, 255, 153));
         btnF.setFont(new java.awt.Font("Courier New", 0, 24)); // NOI18N
         btnF.setText("F");
         btnF.addActionListener(new java.awt.event.ActionListener() {
@@ -185,6 +191,7 @@ public final class Form extends javax.swing.JFrame {
             }
         });
 
+        btnM.setBackground(new java.awt.Color(255, 255, 153));
         btnM.setFont(new java.awt.Font("Courier New", 0, 24)); // NOI18N
         btnM.setText("M");
         btnM.addActionListener(new java.awt.event.ActionListener() {
@@ -193,6 +200,7 @@ public final class Form extends javax.swing.JFrame {
             }
         });
 
+        btnH.setBackground(new java.awt.Color(255, 255, 153));
         btnH.setFont(new java.awt.Font("Courier New", 0, 24)); // NOI18N
         btnH.setText("H");
         btnH.addActionListener(new java.awt.event.ActionListener() {
@@ -201,6 +209,7 @@ public final class Form extends javax.swing.JFrame {
             }
         });
 
+        btnI.setBackground(new java.awt.Color(255, 255, 153));
         btnI.setFont(new java.awt.Font("Courier New", 0, 24)); // NOI18N
         btnI.setText("I");
         btnI.addActionListener(new java.awt.event.ActionListener() {
@@ -209,6 +218,7 @@ public final class Form extends javax.swing.JFrame {
             }
         });
 
+        btnJ.setBackground(new java.awt.Color(255, 255, 153));
         btnJ.setFont(new java.awt.Font("Courier New", 0, 24)); // NOI18N
         btnJ.setText("J");
         btnJ.addActionListener(new java.awt.event.ActionListener() {
@@ -217,6 +227,7 @@ public final class Form extends javax.swing.JFrame {
             }
         });
 
+        btnK.setBackground(new java.awt.Color(255, 255, 153));
         btnK.setFont(new java.awt.Font("Courier New", 0, 24)); // NOI18N
         btnK.setText("K");
         btnK.addActionListener(new java.awt.event.ActionListener() {
@@ -225,6 +236,7 @@ public final class Form extends javax.swing.JFrame {
             }
         });
 
+        btnL.setBackground(new java.awt.Color(255, 255, 153));
         btnL.setFont(new java.awt.Font("Courier New", 0, 24)); // NOI18N
         btnL.setText("L");
         btnL.addActionListener(new java.awt.event.ActionListener() {
@@ -233,6 +245,7 @@ public final class Form extends javax.swing.JFrame {
             }
         });
 
+        btnR.setBackground(new java.awt.Color(255, 255, 153));
         btnR.setFont(new java.awt.Font("Courier New", 0, 24)); // NOI18N
         btnR.setText("R");
         btnR.addActionListener(new java.awt.event.ActionListener() {
@@ -241,6 +254,7 @@ public final class Form extends javax.swing.JFrame {
             }
         });
 
+        btnN.setBackground(new java.awt.Color(255, 255, 153));
         btnN.setFont(new java.awt.Font("Courier New", 0, 24)); // NOI18N
         btnN.setText("N");
         btnN.addActionListener(new java.awt.event.ActionListener() {
@@ -249,6 +263,7 @@ public final class Form extends javax.swing.JFrame {
             }
         });
 
+        btnÑ.setBackground(new java.awt.Color(255, 255, 153));
         btnÑ.setFont(new java.awt.Font("Courier New", 0, 24)); // NOI18N
         btnÑ.setText("Ñ");
         btnÑ.addActionListener(new java.awt.event.ActionListener() {
@@ -257,6 +272,7 @@ public final class Form extends javax.swing.JFrame {
             }
         });
 
+        btnO.setBackground(new java.awt.Color(255, 255, 153));
         btnO.setFont(new java.awt.Font("Courier New", 0, 24)); // NOI18N
         btnO.setText("O");
         btnO.addActionListener(new java.awt.event.ActionListener() {
@@ -265,6 +281,7 @@ public final class Form extends javax.swing.JFrame {
             }
         });
 
+        btnP.setBackground(new java.awt.Color(255, 255, 153));
         btnP.setFont(new java.awt.Font("Courier New", 0, 24)); // NOI18N
         btnP.setText("P");
         btnP.addActionListener(new java.awt.event.ActionListener() {
@@ -273,6 +290,7 @@ public final class Form extends javax.swing.JFrame {
             }
         });
 
+        btnQ.setBackground(new java.awt.Color(255, 255, 153));
         btnQ.setFont(new java.awt.Font("Courier New", 0, 24)); // NOI18N
         btnQ.setText("Q");
         btnQ.addActionListener(new java.awt.event.ActionListener() {
@@ -281,6 +299,7 @@ public final class Form extends javax.swing.JFrame {
             }
         });
 
+        btnE.setBackground(new java.awt.Color(255, 255, 153));
         btnE.setFont(new java.awt.Font("Courier New", 0, 24)); // NOI18N
         btnE.setText("E");
         btnE.addActionListener(new java.awt.event.ActionListener() {
@@ -289,6 +308,7 @@ public final class Form extends javax.swing.JFrame {
             }
         });
 
+        btnS.setBackground(new java.awt.Color(255, 255, 153));
         btnS.setFont(new java.awt.Font("Courier New", 0, 24)); // NOI18N
         btnS.setText("S");
         btnS.addActionListener(new java.awt.event.ActionListener() {
@@ -297,6 +317,7 @@ public final class Form extends javax.swing.JFrame {
             }
         });
 
+        btnT.setBackground(new java.awt.Color(255, 255, 153));
         btnT.setFont(new java.awt.Font("Courier New", 0, 24)); // NOI18N
         btnT.setText("T");
         btnT.addActionListener(new java.awt.event.ActionListener() {
@@ -305,6 +326,7 @@ public final class Form extends javax.swing.JFrame {
             }
         });
 
+        btnX.setBackground(new java.awt.Color(255, 255, 153));
         btnX.setFont(new java.awt.Font("Courier New", 0, 24)); // NOI18N
         btnX.setText("X");
         btnX.addActionListener(new java.awt.event.ActionListener() {
@@ -313,6 +335,7 @@ public final class Form extends javax.swing.JFrame {
             }
         });
 
+        btnZ.setBackground(new java.awt.Color(255, 255, 153));
         btnZ.setFont(new java.awt.Font("Courier New", 0, 24)); // NOI18N
         btnZ.setText("Z");
         btnZ.addActionListener(new java.awt.event.ActionListener() {
@@ -321,6 +344,7 @@ public final class Form extends javax.swing.JFrame {
             }
         });
 
+        btnY.setBackground(new java.awt.Color(255, 255, 153));
         btnY.setFont(new java.awt.Font("Courier New", 0, 24)); // NOI18N
         btnY.setText("Y");
         btnY.addActionListener(new java.awt.event.ActionListener() {
@@ -329,6 +353,7 @@ public final class Form extends javax.swing.JFrame {
             }
         });
 
+        btnU.setBackground(new java.awt.Color(255, 255, 153));
         btnU.setFont(new java.awt.Font("Courier New", 0, 24)); // NOI18N
         btnU.setText("U");
         btnU.addActionListener(new java.awt.event.ActionListener() {
@@ -337,6 +362,7 @@ public final class Form extends javax.swing.JFrame {
             }
         });
 
+        btnV.setBackground(new java.awt.Color(255, 255, 153));
         btnV.setFont(new java.awt.Font("Courier New", 0, 24)); // NOI18N
         btnV.setText("V");
         btnV.addActionListener(new java.awt.event.ActionListener() {
@@ -345,6 +371,7 @@ public final class Form extends javax.swing.JFrame {
             }
         });
 
+        btnW.setBackground(new java.awt.Color(255, 255, 153));
         btnW.setFont(new java.awt.Font("Courier New", 0, 24)); // NOI18N
         btnW.setText("W");
         btnW.addActionListener(new java.awt.event.ActionListener() {
@@ -353,6 +380,7 @@ public final class Form extends javax.swing.JFrame {
             }
         });
 
+        btnAyuda.setBackground(new java.awt.Color(102, 255, 204));
         btnAyuda.setFont(new java.awt.Font("Courier New", 0, 15)); // NOI18N
         btnAyuda.setText("Ayuda");
         btnAyuda.addActionListener(new java.awt.event.ActionListener() {
@@ -361,6 +389,7 @@ public final class Form extends javax.swing.JFrame {
             }
         });
 
+        btnIniciar.setBackground(new java.awt.Color(102, 255, 204));
         btnIniciar.setFont(new java.awt.Font("Courier New", 0, 15)); // NOI18N
         btnIniciar.setText("Iniciar");
         btnIniciar.addActionListener(new java.awt.event.ActionListener() {
@@ -369,6 +398,7 @@ public final class Form extends javax.swing.JFrame {
             }
         });
 
+        btnRetroceder.setBackground(new java.awt.Color(102, 255, 204));
         btnRetroceder.setFont(new java.awt.Font("Courier New", 0, 15)); // NOI18N
         btnRetroceder.setText("Retroceder");
         btnRetroceder.addActionListener(new java.awt.event.ActionListener() {
@@ -382,6 +412,7 @@ public final class Form extends javax.swing.JFrame {
 
         txtArea.setFont(new java.awt.Font("Courier New", 1, 36)); // NOI18N
 
+        btnPista.setBackground(new java.awt.Color(102, 255, 204));
         btnPista.setFont(new java.awt.Font("Courier New", 0, 15)); // NOI18N
         btnPista.setText("Pista");
         btnPista.addActionListener(new java.awt.event.ActionListener() {
