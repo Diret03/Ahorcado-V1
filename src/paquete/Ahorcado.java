@@ -24,9 +24,9 @@ import javax.swing.JOptionPane;
 public class Ahorcado {
     
     private ArrayList<String> palabras;
-    public String[] letras;  //arreglo de String que almacena el juego como tal, dicho arreglo se llenara de letra en letra hasta adivinar toda la palabra
+    public String[] letras;  //arreglo de String que almacena el estado del juego, dicho arreglo se llenara de letra en letra hasta adivinar toda la palabra
     String[] palabraAux;  //arreglo de String para almacenar palabra a adivinar
-    public Pila pila;  //uso de pila de Java, no use la clase Pila creada en clases debido a la limitacion de tama?o
+    public Pila pila;  //uso de la clase Pila creada en clase
     public int intentoActual = 0;
 
     

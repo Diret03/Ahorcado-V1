@@ -43,7 +43,7 @@ public final class Form extends javax.swing.JFrame {
             btnN, btnO, btnP, btnQ, btnR, btnS, btnT, btnU, btnW, btnX, btnY, btnZ,
             btnJ, btnÑ, btnV};
 
-// Deshabilitar los botones de letras
+        // Deshabilitar los botones de letras
         for (JButton boton : botonesLetras) {
             boton.setEnabled(false);
         }
@@ -52,7 +52,10 @@ public final class Form extends javax.swing.JFrame {
         lblPista.setVisible(false);
 
         try {
-
+             
+            /*Se utiliza el paquete ImageIO de Java para leer las imagenes almacenadas en la carpeta sprites del proyecto, cada sprite se almacena 
+            en un arreglo de sprites tipo BufferedImage
+            */
             sprites = new BufferedImage[7];
             sprites[0] = ImageIO.read(new File("sprites/1.png"));
             sprites[1] = ImageIO.read(new File("sprites/2.png"));
@@ -62,12 +65,12 @@ public final class Form extends javax.swing.JFrame {
             sprites[5] = ImageIO.read(new File("sprites/6.png"));
             sprites[6] = ImageIO.read(new File("sprites/7.png"));
 
-            icono = new ImageIcon(sprites[0]);
-            ahorcado.setIcon(icono);
+            icono = new ImageIcon(sprites[0]); //Se utiliza el paquete ImageIcon para almacenar imagenes del arreglo y crear un icono
+            ahorcado.setIcon(icono);       //se utiliza el icono creado para aplicarlo en el label de ahorcado
 
-            ImageIcon formLogo = new ImageIcon("icono.png");
-            setIconImage(formLogo.getImage());
-
+            ImageIcon formLogo = new ImageIcon("icono.png");    //se lee el icono de la aplicacion
+            setIconImage(formLogo.getImage());                    //se establece el icono del formulario
+ 
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -891,19 +894,34 @@ public final class Form extends javax.swing.JFrame {
 
     }
     
+    /**
+     * <h2>Este método realiza un intento del juego</h2>
+     * Recibe como parámetros una cadena llamada letra y un bottón.
+     * La letra recibida se buscará en la palabra a adivinar, si se encuentra se almacenará en la posición correspondiente
+     * en el arreglo de letras, se apilará dicho arreglo y se pintará el botón correspondiente a la letra acertada.
+     * Si no ha sido encotrada la letra, se incrementará el intento Actual y se actualizará el sprite.
+     * Si el arreglo de letras es igual a la palabra a adivinar, el juego se termina.
+     * Si el número de intentos ha llegado a su máximo, el juego termina.
+     *
+     * No retorna nada.
+     *
+
+     * @param letra
+     * @param btn
+     */
       public void Intento(String letra, JButton btn) {
 
-        boolean encontrado = false;
+        boolean encontrado = false;      //variable boolean auxiliar para verificar si se encontró la letra
         for (int i = 0; i < juego.letras.length; i++) {
-            if (juego.palabraAux[i].equals(letra)) {
-                juego.letras[i] = letra;
+            if (juego.palabraAux[i].equals(letra)) { //si la palabra a adivinar en la posición actual es igual la letra recibida como parámetro
+                juego.letras[i] = letra;                    //las posiciones o la posición que contenga la letra serán almacenada en el arreglo de letras
                 encontrado = true;
             }
 
         }
  
 
-        if (!encontrado) {
+        if (!encontrado) {     //si la letra NO ha sido encontrada...
 
             juego.intentoActual++;
             if (juego.intentoActual == numIntentosMAX) {
@@ -916,10 +934,12 @@ public final class Form extends javax.swing.JFrame {
                 
         
             }
-        } else {
-            btn.setBackground(Color.GREEN);
-            if (Arrays.equals(juego.palabraAux, juego.letras)) {
-              
+        } else {            //si la letra SI ha sido encontrada...
+            
+            btn.setBackground(Color.GREEN);                 //se pinta el botón recibido en el parámetro de verde
+            if (Arrays.equals(juego.palabraAux, juego.letras)) { //si el arreglo de la palabra a adivinar es igual al arreglo del estado del juego
+                
+                 //se muestra un mensaje de éxito
                 JOptionPane.showMessageDialog(null, "Ganaste!", "Felicidades", JOptionPane.INFORMATION_MESSAGE);
                 
 
@@ -928,7 +948,8 @@ public final class Form extends javax.swing.JFrame {
 
         //Comprobar si ultimo elemento de la pila no coincide con el estado actual de letras, para que asi no haya elementos repetidos en la pila
         if (!Arrays.equals(juego.letras.clone(), (String[])juego.pila.Peek())) {
-            juego.pila.Apilar(juego.letras.clone());  //se usa el metodo clone para obtener el estado actual del juego
+            juego.pila.Apilar(juego.letras.clone());  //se apila una copia del estado actual del juego
+                                                             //se usa el metodo clone para obtener el estado actual del juego
         }
 
         System.out.println("Pila: " + juego.PrintPila());
