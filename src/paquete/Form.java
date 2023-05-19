@@ -30,7 +30,8 @@ public final class Form extends javax.swing.JFrame {
     ImageIcon icono;
     int numIntentosMAX = 7;
     boolean pistaSelect = false;
-    private static Form instance = null;
+    String[] pista;
+  
 
     public Form() {
         initComponents();
@@ -429,21 +430,7 @@ public final class Form extends javax.swing.JFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(btnPista, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(btnAyuda, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(btnH, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnI, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnJ, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnK, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnL, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnM, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnN, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(btnAyuda, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addContainerGap(138, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(ahorcado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -469,7 +456,22 @@ public final class Form extends javax.swing.JFrame {
                                 .addComponent(btnF, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnG, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnH, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnI, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnJ, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnK, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnL, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnM, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnN, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -776,35 +778,11 @@ public final class Form extends javax.swing.JFrame {
 
         if (juego != null) {
 
-            if (!pistaSelect) {
-
-                Random random = new Random();
-                String[] pista = ((String[]) juego.pila.Peek()).clone();
-                int numExcluido = 0;
-
-                for (int i = 0; i < pista.length; i++) {
-
-                    if (pista[i] != null) {
-                        numExcluido = i;
-                        break;
-                    }
-                }
-
-                int indiceRandom;
+            if (!pistaSelect) {       //si la ayuda de pista no ha sido seleccionada antes...
 
                 do {
-                    indiceRandom = random.nextInt(pista.length) + 0;
-                } while (indiceRandom == numExcluido);
-
-                for (int i = 0; i < pista.length; i++) {
-
-                    if (!juego.palabraAux[indiceRandom].equals(pista[i])) {
-
-                        pista[indiceRandom] = juego.palabraAux[indiceRandom];
-                        break;
-
-                    }
-                }
+                    Pista();
+                } while (Arrays.equals(pista, juego.letras));
 
                 lblPista.setVisible(true);
                 lblPista.setText(juego.Palabra(pista));
@@ -813,6 +791,24 @@ public final class Form extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnPistaActionPerformed
 
+    public void Pista()
+    {
+        Random random = new Random();
+        pista = ((String[]) juego.pila.Peek()).clone();
+
+        int indiceAleatorio = 0;
+        int j = 0;
+        while (j <= pista.length) {
+            indiceAleatorio = random.nextInt(pista.length);
+            if (pista[j] != null && pista[j].equals(juego.palabraAux[indiceAleatorio])) {
+                j++;
+            } else {
+                pista[indiceAleatorio] = juego.palabraAux[indiceAleatorio];
+                break;
+            }
+        }
+    }
+  
     /**
      * @param args the command line arguments
      */
@@ -848,51 +844,8 @@ public final class Form extends javax.swing.JFrame {
         });
     }
 
-    public static Form getInstance() {
-        if (instance == null) {
-            instance = new Form();
-        }
-        return instance;
-    }
+ 
 
-    public void Intento(String letra) {
-
-        boolean encontrado = false;
-        for (int i = 0; i < juego.letras.length; i++) {
-            if (juego.palabraAux[i].equals(letra)) {
-                juego.letras[i] = letra;
-                encontrado = true;
-            }
-
-        }
-
-        if (!encontrado) {
-
-            juego.intentoActual++;
-            if (juego.intentoActual == numIntentosMAX) {
-                JOptionPane.showMessageDialog(null, "Perdiste! La palabra era: " + juego.StringArray(juego.palabraAux), "Fin", JOptionPane.ERROR_MESSAGE);
-
-            } else {
-                icono = new ImageIcon(sprites[juego.intentoActual]);
-                ahorcado.setIcon(icono);
-                
-        
-            }
-        } else {
-            if (Arrays.equals(juego.palabraAux, juego.letras)) {
-                JOptionPane.showMessageDialog(null, "Ganaste!", "Felicidades", JOptionPane.INFORMATION_MESSAGE);
-
-            }
-        }
-
-        //Comprobar si ultimo elemento de la pila no coincide con el estado actual de letras, para que asi no haya elementos repetidos en la pila
-        if (!Arrays.equals(juego.letras.clone(), (String[])juego.pila.Peek())) {
-            juego.pila.Apilar(juego.letras.clone());  //se usa el metodo clone para obtener el estado actual del juego
-        }
-
-        System.out.println("Pila: " + juego.PrintPila());
-
-    }
     
     /**
      * <h2>Este método realiza un intento del juego</h2>
@@ -948,7 +901,7 @@ public final class Form extends javax.swing.JFrame {
 
         //Comprobar si ultimo elemento de la pila no coincide con el estado actual de letras, para que asi no haya elementos repetidos en la pila
         if (!Arrays.equals(juego.letras.clone(), (String[])juego.pila.Peek())) {
-            juego.pila.Apilar(juego.letras.clone());  //se apila una copia del estado actual del juego
+            juego.pila.Apilar(juego.letras.clone());  //se apila el estado actual del juego
                                                              //se usa el metodo clone para obtener el estado actual del juego
         }
 
