@@ -41,7 +41,7 @@ public class FormInicio extends javax.swing.JFrame {
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
         // TODO add your handling code here:
-        Form frm1 = new Form();
+        FormAlternativas frm1 = new FormAlternativas();
         frm1.setVisible(true);
         this.dispose();
 
