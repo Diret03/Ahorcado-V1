@@ -104,4 +104,30 @@ public class Pila {
     public String Imprimir(){
         return "Cambios";
     }
+
+    public int getNumElementos() {
+        return numElementos;
+    }
+
+    public void setNumElementos(int numElementos) {
+        this.numElementos = numElementos;
+    }
+
+    public int getTam() {
+        return tam;
+    }
+
+    public void setTam(int tam) {
+        this.tam = tam;
+    }
+
+    public Object[] getA() {
+        return A;
+    }
+
+    public void setA(Object[] A) {
+        this.A = A;
+    }
+    
+    
 }

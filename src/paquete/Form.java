@@ -41,7 +41,7 @@ public final class Form extends javax.swing.JFrame {
         initComponents();
         // Centrar el formulario en la pantalla
         setLocationRelativeTo(null);
-        this.getContentPane().setBackground(Color.cyan);
+        this.getContentPane().setBackground(Color.decode("#e0e1dd"));
         /*
         Al iniciar el juego el usuario no puede jugar mientras no haya dado clic en iniciar es por esto la 
         desabilitacion de los botones 
@@ -137,6 +137,7 @@ public final class Form extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Juego del Ahorcado");
+        setBackground(new java.awt.Color(224, 225, 221));
 
         btnG.setFont(new java.awt.Font("Courier New", 0, 24)); // NOI18N
         btnG.setText("G");
@@ -359,7 +360,7 @@ public final class Form extends javax.swing.JFrame {
             }
         });
 
-        btnAyuda.setBackground(new java.awt.Color(255, 255, 153));
+        btnAyuda.setBackground(new java.awt.Color(119, 141, 169));
         btnAyuda.setFont(new java.awt.Font("Courier New", 0, 15)); // NOI18N
         btnAyuda.setText("Ayuda");
         btnAyuda.addActionListener(new java.awt.event.ActionListener() {
@@ -368,7 +369,7 @@ public final class Form extends javax.swing.JFrame {
             }
         });
 
-        btnIniciar.setBackground(new java.awt.Color(255, 255, 153));
+        btnIniciar.setBackground(new java.awt.Color(119, 141, 169));
         btnIniciar.setFont(new java.awt.Font("Courier New", 0, 15)); // NOI18N
         btnIniciar.setText("Iniciar");
         btnIniciar.addActionListener(new java.awt.event.ActionListener() {
@@ -377,7 +378,7 @@ public final class Form extends javax.swing.JFrame {
             }
         });
 
-        btnRetroceder.setBackground(new java.awt.Color(255, 255, 153));
+        btnRetroceder.setBackground(new java.awt.Color(119, 141, 169));
         btnRetroceder.setFont(new java.awt.Font("Courier New", 0, 15)); // NOI18N
         btnRetroceder.setText("Retroceder");
         btnRetroceder.addActionListener(new java.awt.event.ActionListener() {
@@ -391,7 +392,7 @@ public final class Form extends javax.swing.JFrame {
 
         txtArea.setFont(new java.awt.Font("Courier New", 1, 36)); // NOI18N
 
-        btnPista.setBackground(new java.awt.Color(255, 255, 153));
+        btnPista.setBackground(new java.awt.Color(119, 141, 169));
         btnPista.setFont(new java.awt.Font("Courier New", 0, 15)); // NOI18N
         btnPista.setText("Pista");
         btnPista.addActionListener(new java.awt.event.ActionListener() {
@@ -403,7 +404,7 @@ public final class Form extends javax.swing.JFrame {
         lblPista.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         lblPista.setText("Pista");
 
-        btnLimpiar.setBackground(new java.awt.Color(255, 255, 153));
+        btnLimpiar.setBackground(new java.awt.Color(119, 141, 169));
         btnLimpiar.setFont(new java.awt.Font("Courier New", 0, 15)); // NOI18N
         btnLimpiar.setText("Limpiar");
         btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
@@ -743,7 +744,7 @@ public final class Form extends javax.swing.JFrame {
 // Habilitar los botones de letras
         for (JButton boton : botonesLetras) {
             boton.setEnabled(true);
-            boton.setBackground(Color.LIGHT_GRAY);
+            boton.setBackground(Color.decode("#e0e1dd"));
         }
         lblAyuda.setVisible(false);
         lblPista.setVisible(false);
@@ -761,30 +762,35 @@ public final class Form extends javax.swing.JFrame {
 
     private void btnRetrocederActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRetrocederActionPerformed
 
-        if (Arrays.equals(juego.palabraAux, juego.letras)) {
-            JOptionPane.showMessageDialog(null, "No se puede retroceder, ya ganaste...", "Error", JOptionPane.ERROR_MESSAGE);
-        } else {
-            if (juego.intentoActual == numIntentosMAX) {
-                JOptionPane.showMessageDialog(null, "No se puede retroceder, ya perdiste...", "Error", JOptionPane.ERROR_MESSAGE);
+        if (juego != null) {
+            if (Arrays.equals(juego.palabraAux, juego.letras)) {
+                JOptionPane.showMessageDialog(null, "No se puede retroceder, ya ganaste...", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
-                if (juego.intentoActual > 0) {
-
-                    if (juego.pila.Size() > 1) {
-                        juego.pila.Desapilar();
-                        juego.letras = ((String[]) juego.pila.Peek()).clone();
-                        txtArea.setText(juego.Palabra());
-                        System.out.println("Pila retrocedida: " + juego.PrintPila());
-                    }
-
-                    juego.intentoActual--;
-                    icono = new ImageIcon(sprites[juego.intentoActual]);
-                    ahorcado.setIcon(icono);
-
+                if (juego.intentoActual == numIntentosMAX) {
+                    JOptionPane.showMessageDialog(null, "No se puede retroceder, ya perdiste...", "Error", JOptionPane.ERROR_MESSAGE);
                 } else {
-                    JOptionPane.showMessageDialog(null, "No puede retroceder mas", "Error", JOptionPane.ERROR_MESSAGE);
+                    if (juego.intentoActual > 0) {
+
+                        if (juego.pila.Size() > 1) {
+                            juego.pila.Desapilar();
+                            juego.letras = ((String[]) juego.pila.Peek()).clone();
+                            txtArea.setText(juego.Palabra());
+                            System.out.println("Pila retrocedida: " + juego.PrintPila());
+                        }
+
+                        juego.intentoActual--;
+                        icono = new ImageIcon(sprites[juego.intentoActual]);
+                        ahorcado.setIcon(icono);
+
+                    } else {
+                        JOptionPane.showMessageDialog(null, "No puede retroceder mas", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
                 }
             }
         }
+        else
+            JOptionPane.showMessageDialog(null, "Ni siquiera ha empezado el juego...", "Error", JOptionPane.ERROR_MESSAGE);
+
 
     }//GEN-LAST:event_btnRetrocederActionPerformed
 
@@ -832,12 +838,21 @@ public final class Form extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAMouseClicked
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
-        // TODO add your handling code here:
-        btnLimpiar.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                txtArea.setText("");
+      
+        if (juego != null) {
+            
+            while (juego.pila.Size()> 1) {
+                juego.pila.Desapilar();
             }
-        });
+            juego.letras = ((String[]) juego.pila.Peek()).clone();
+            juego.intentoActual = 0;
+            icono = new ImageIcon(sprites[0]);
+            ahorcado.setIcon(icono);
+            txtArea.setText(juego.Palabra());
+        }
+        else
+            JOptionPane.showMessageDialog(null, "Ni siquiera ha empezado el juego...", "Error", JOptionPane.ERROR_MESSAGE);
+            
 
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
@@ -936,7 +951,7 @@ public final class Form extends javax.swing.JFrame {
             }
         } else {            //si la letra SI ha sido encontrada...
 
-            btn.setBackground(Color.GREEN);                 //se pinta el botón recibido en el parámetro de verde
+            btn.setBackground(Color.decode("#415a77"));                 //se pinta el botón recibido en el parámetro de verde
             if (Arrays.equals(juego.palabraAux, juego.letras)) { //si el arreglo de la palabra a adivinar es igual al arreglo del estado del juego
                 sonidoCorrecto.play();
                 //se muestra un mensaje de éxito

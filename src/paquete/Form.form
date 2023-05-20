@@ -11,6 +11,9 @@
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
     <Property name="title" type="java.lang.String" value="Juego del Ahorcado"/>
+    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+      <Color blue="dd" green="e1" red="e0" type="rgb"/>
+    </Property>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -513,7 +516,7 @@
     <Component class="javax.swing.JButton" name="btnAyuda">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="99" green="ff" red="ff" type="rgb"/>
+          <Color blue="a9" green="8d" red="77" type="rgb"/>
         </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Courier New" size="15" style="0"/>
@@ -527,7 +530,7 @@
     <Component class="javax.swing.JButton" name="btnIniciar">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="99" green="ff" red="ff" type="rgb"/>
+          <Color blue="a9" green="8d" red="77" type="rgb"/>
         </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Courier New" size="15" style="0"/>
@@ -541,7 +544,7 @@
     <Component class="javax.swing.JButton" name="btnRetroceder">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="99" green="ff" red="ff" type="rgb"/>
+          <Color blue="a9" green="8d" red="77" type="rgb"/>
         </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Courier New" size="15" style="0"/>
@@ -575,7 +578,7 @@
     <Component class="javax.swing.JButton" name="btnPista">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="99" green="ff" red="ff" type="rgb"/>
+          <Color blue="a9" green="8d" red="77" type="rgb"/>
         </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Courier New" size="15" style="0"/>
@@ -597,7 +600,7 @@
     <Component class="javax.swing.JButton" name="btnLimpiar">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="99" green="ff" red="ff" type="rgb"/>
+          <Color blue="a9" green="8d" red="77" type="rgb"/>
         </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Courier New" size="15" style="0"/>

@@ -25,6 +25,7 @@ public class FormAlternativas extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         establecerColorBoton();
         getContentPane().setBackground(Color.WHITE);
+        btnAyuda.setBackground(Color.decode("#ADB5BD"));
 //         getContentPane().setBackground(new Color(144, 238, 144));
 
     }
@@ -66,44 +67,51 @@ public class FormAlternativas extends javax.swing.JFrame {
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnAyuda.setBackground(new java.awt.Color(255, 153, 51));
+        btnAyuda.setBackground(new java.awt.Color(206, 212, 218));
+        btnAyuda.setFont(new java.awt.Font("Harrington", 1, 18)); // NOI18N
         btnAyuda.setText("Ayuda");
+        btnAyuda.setBorder(null);
+        btnAyuda.setBorderPainted(false);
         btnAyuda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAyudaActionPerformed(evt);
             }
         });
-        getContentPane().add(btnAyuda, new org.netbeans.lib.awtextra.AbsoluteConstraints(473, 499, 80, 31));
+        getContentPane().add(btnAyuda, new org.netbeans.lib.awtextra.AbsoluteConstraints(463, 490, 90, 40));
 
-        btnJugar.setBackground(new java.awt.Color(0, 255, 51));
+        btnJugar.setBackground(new java.awt.Color(173, 181, 189));
+        btnJugar.setFont(new java.awt.Font("Harrington", 1, 18)); // NOI18N
         btnJugar.setText("Jugar");
+        btnJugar.setBorder(null);
+        btnJugar.setBorderPainted(false);
         btnJugar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnJugarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnJugar, new org.netbeans.lib.awtextra.AbsoluteConstraints(473, 455, 80, 32));
+        getContentPane().add(btnJugar, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 440, 90, 40));
 
         btnFilAhorcado.setBackground(new java.awt.Color(0, 0, 0));
-        btnFilAhorcado.setForeground(new java.awt.Color(0, 0, 0));
         getContentPane().add(btnFilAhorcado, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, 478, 29));
 
-        btnSalir.setBackground(new java.awt.Color(51, 51, 255));
+        btnSalir.setBackground(new java.awt.Color(222, 226, 230));
+        btnSalir.setFont(new java.awt.Font("Harrington", 1, 18)); // NOI18N
         btnSalir.setText("Salir");
+        btnSalir.setBorder(null);
+        btnSalir.setBorderPainted(false);
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalirActionPerformed(evt);
             }
         });
-        getContentPane().add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(473, 548, 80, 31));
+        getContentPane().add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(463, 539, 90, 40));
 
-        jLabel1.setFont(new java.awt.Font("Harrington", 0, 48)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 255));
+        jLabel1.setFont(new java.awt.Font("Harrington", 1, 48)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(51, 51, 51));
         jLabel1.setText("Juego Del Ahorcado");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(157, 26, -1, 81));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 460, 90));
 
         btnColumAhorcado.setBackground(new java.awt.Color(0, 0, 0));
-        btnColumAhorcado.setForeground(new java.awt.Color(0, 0, 0));
         btnColumAhorcado.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnColumAhorcado.setBorderPainted(false);
         btnColumAhorcado.setFocusable(false);
@@ -119,10 +127,10 @@ public class FormAlternativas extends javax.swing.JFrame {
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(399, 160, 218, 263));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/PiernasAhorcado.png"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 590, 185, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 590, 185, -1));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/Braso.png"))); // NOI18N
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(395, 446, 66, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(381, 439, 80, 120));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/BrasoDerecho.png"))); // NOI18N
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(565, 429, 94, 107));
