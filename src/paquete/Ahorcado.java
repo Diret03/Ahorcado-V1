@@ -23,9 +23,9 @@ import javax.swing.JOptionPane;
  */
 public class Ahorcado {
     
-    private ArrayList<String> palabras;
+    private ArrayList<String> palabras; //arraylist para almacenar las palabras del archivo de texto palabras.txt
     public String[] letras;  //arreglo de String que almacena el estado del juego, dicho arreglo se llenara de letra en letra hasta adivinar toda la palabra
-    String[] palabraAux;  //arreglo de String para almacenar palabra a adivinar
+    String[] palabraAux;  //arreglo de String para almacenar la palabra a adivinar
     public Pila pila;  //uso de la clase Pila creada en clase
     public int intentoActual = 0;
 
@@ -36,11 +36,9 @@ public class Ahorcado {
     
     public Ahorcado() 
     {
-        palabras = new ArrayList<>();
-       
-        //this.intentoActual = intentoActual;
-           
-        //try y catch para leer archivo de texto que contiene 50 palabras, dichas palabras seran almacenadas en una arraylist
+        palabras = new ArrayList<>();   //se inicializa el arraylist
+              
+        //try y catch para leer archivo de texto que contiene palabras, dichas palabras seran almacenadas en una arraylist
         try {  
             Scanner sc = new Scanner(new File("palabras.txt"));
             while (sc.hasNextLine()) {
@@ -50,36 +48,51 @@ public class Ahorcado {
         } catch (Exception e) 
         {
             System.out.println(e.getMessage());
-            System.out.println("Palabras...2");
             
         }          
     }
     
 
+     /**
+     * <h2>Método para obtener una palabra aleatorio</h2>
+     * Se obtiene palabra aleatoria de una posición aleatoria del ArrayList de palabras.
+     *
+     * @return Palabra aleatoria
+     */ 
     public String PalabraRandom() {
-        //Palabras del juego
-        //se obtiene una palabra aleatoria del arraylist
-        return palabras.get(new Random().nextInt(palabras.size())).toUpperCase();
+
+        return palabras.get(new Random().nextInt(palabras.size())).toUpperCase(); //se pone en mayusculas la palabra obtenida
         
     }
     
-    public void Inicio()  //metodo para asignar una letra aleatoria en una posicion aleatoria en el arreglo de letras, basandose en la palabra a adivinar
+     /**
+     * <h2>Método para iniciar el juego</h2>
+     * Se obtiene una letra aleatoria de la palabra a adivinar y se la asigna en en la primera jugada del juego.
+     *
+     * No retorna nada.
+     *
+     */ 
+    public void Inicio()  
     {
-        palabraAux = PalabraRandom().split("");  
-        pila = new Pila(palabraAux.length);
-        letras = new String[palabraAux.length];
+        palabraAux = PalabraRandom().split("");    //se obtiene una palabra 
+        pila = new Pila(palabraAux.length);         //se crea una pila del tamaño de la longitud de la palabra a adivinar
+        letras = new String[palabraAux.length];         //se crea el arreglo de letras el cual contiene las jugadas
       
         
-        Random ran = new Random();
-        int indiceRandom = ran.nextInt(letras.length);
-        letras[indiceRandom] = palabraAux[indiceRandom];
-        pila.Apilar(letras.clone());
+        Random ran = new Random();                             
+        int indiceRandom = ran.nextInt(letras.length);   //se obtiene un numero aleatorio en el rango de longitud del arreglo de letras
+        letras[indiceRandom] = palabraAux[indiceRandom];      //se asigna una letra aleatoria en su respectiva posición en el arreglo de letras
+        pila.Apilar(letras.clone());                   //se apila la primera jugada del juego
          System.out.println("Pila inicial:\n"+PrintPila());
-        
-        //System.out.println(this.StringArray(letras));
+
     }
 
-            
+     /**
+     * <h2>Método para retornar cadena de la jugada actual</h2>
+     * Se genera una cadena que representa de forma visual la jugada. Se Asigna las letras en su respectiva posición
+     * y si la posición es null se asigna un guión bajo.
+     * @return Cadena que contiene la jugada actual
+     */      
     public String Palabra()
     {
         
@@ -96,6 +109,15 @@ public class Ahorcado {
         return r;
     }
     
+    /**
+     * <h4>Método que recibe un arreglo de String que retorna una cadena en forma de palabra</h4>
+     * Se genera una cadena que representa de forma visual la jugada. Se Asigna las letras en su respectiva posición
+     * y si la posición es null se asigna un guión bajo.
+     * Método utilizado para imprimir las ayudas del juego.
+     *
+     * @param palabra Arreglo de String
+     * @return Cadena que contiene la jugada actual
+     */
     public String Palabra(String[] palabra)
     {
          
@@ -111,7 +133,7 @@ public class Ahorcado {
         return r;
     }
     
-    public String StringArray(String[] arreglo) //metodo de ayuda para imprimir el arreglo de letras 
+    public String StringArray(String[] arreglo) //metodo de ayuda para imprimir un arreglo de String
     {
         String resultado = "";
         for (String r : arreglo) {
