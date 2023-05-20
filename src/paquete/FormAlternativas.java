@@ -5,10 +5,8 @@
 package paquete;
 
 import java.awt.Color;
-import java.awt.event.ActionListener;
-import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 /**
  *
@@ -19,10 +17,29 @@ public class FormAlternativas extends javax.swing.JFrame {
     /**
      * Creates new form FormAlternativas
      */
+    private JPanel panel;
+
     public FormAlternativas() {
         initComponents();
-        this.getContentPane().setBackground(Color.cyan);
-        
+// Centrar el formulario en la pantalla
+        setLocationRelativeTo(null);
+        establecerColorBoton();
+        getContentPane().setBackground(Color.WHITE);
+//         getContentPane().setBackground(new Color(144, 238, 144));
+
+    }
+
+    private void establecerColorBoton() {
+        Color colorFondo = Color.BLACK; // Color de fondo deseado
+
+        btnColumAhorcado.setBackground(colorFondo);
+        btnColumAhorcado.setContentAreaFilled(false);
+        btnColumAhorcado.setOpaque(true);
+
+        btnFilAhorcado.setBackground(colorFondo);
+        btnFilAhorcado.setContentAreaFilled(false);
+        btnFilAhorcado.setOpaque(true);
+
     }
 
     /**
@@ -34,56 +51,81 @@ public class FormAlternativas extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnJugar = new javax.swing.JButton();
         btnAyuda = new javax.swing.JButton();
+        btnJugar = new javax.swing.JButton();
+        btnFilAhorcado = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        btnColumAhorcado = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnJugar.setText("Jugar");
-        btnJugar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnJugarActionPerformed(evt);
-            }
-        });
-
+        btnAyuda.setBackground(new java.awt.Color(255, 153, 51));
         btnAyuda.setText("Ayuda");
         btnAyuda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAyudaActionPerformed(evt);
             }
         });
+        getContentPane().add(btnAyuda, new org.netbeans.lib.awtextra.AbsoluteConstraints(473, 499, 80, 31));
 
+        btnJugar.setBackground(new java.awt.Color(0, 255, 51));
+        btnJugar.setText("Jugar");
+        btnJugar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnJugarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnJugar, new org.netbeans.lib.awtextra.AbsoluteConstraints(473, 455, 80, 32));
+
+        btnFilAhorcado.setBackground(new java.awt.Color(0, 0, 0));
+        btnFilAhorcado.setForeground(new java.awt.Color(0, 0, 0));
+        getContentPane().add(btnFilAhorcado, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, 478, 29));
+
+        btnSalir.setBackground(new java.awt.Color(51, 51, 255));
         btnSalir.setText("Salir");
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalirActionPerformed(evt);
             }
         });
+        getContentPane().add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(473, 548, 80, 31));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(166, 166, 166)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnSalir)
-                    .addComponent(btnAyuda)
-                    .addComponent(btnJugar))
-                .addContainerGap(249, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(140, 140, 140)
-                .addComponent(btnJugar)
-                .addGap(18, 18, 18)
-                .addComponent(btnAyuda)
-                .addGap(26, 26, 26)
-                .addComponent(btnSalir)
-                .addContainerGap(129, Short.MAX_VALUE))
-        );
+        jLabel1.setFont(new java.awt.Font("Harrington", 0, 48)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 255));
+        jLabel1.setText("Juego Del Ahorcado");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(157, 26, -1, 81));
+
+        btnColumAhorcado.setBackground(new java.awt.Color(0, 0, 0));
+        btnColumAhorcado.setForeground(new java.awt.Color(0, 0, 0));
+        btnColumAhorcado.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnColumAhorcado.setBorderPainted(false);
+        btnColumAhorcado.setFocusable(false);
+        btnColumAhorcado.setSelected(true);
+        btnColumAhorcado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnColumAhorcadoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnColumAhorcado, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, 38, 648));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/Cabez.png"))); // NOI18N
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(399, 160, 218, 263));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/PiernasAhorcado.png"))); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 590, 185, -1));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/Braso.png"))); // NOI18N
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(395, 446, 66, -1));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imágenes/BrasoDerecho.png"))); // NOI18N
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(565, 429, 94, 107));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -108,6 +150,10 @@ public class FormAlternativas extends javax.swing.JFrame {
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void btnColumAhorcadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnColumAhorcadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnColumAhorcadoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -146,7 +192,14 @@ public class FormAlternativas extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAyuda;
+    private javax.swing.JButton btnColumAhorcado;
+    private javax.swing.JButton btnFilAhorcado;
     private javax.swing.JButton btnJugar;
     private javax.swing.JButton btnSalir;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     // End of variables declaration//GEN-END:variables
 }
