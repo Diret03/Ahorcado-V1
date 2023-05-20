@@ -39,7 +39,9 @@ public final class Form extends javax.swing.JFrame {
 
     public Form() {
         initComponents();
-        this.getContentPane().setBackground(Color.CYAN);
+        // Centrar el formulario en la pantalla
+        setLocationRelativeTo(null);
+        this.getContentPane().setBackground(Color.cyan);
         /*
         Al iniciar el juego el usuario no puede jugar mientras no haya dado clic en iniciar es por esto la 
         desabilitacion de los botones 
