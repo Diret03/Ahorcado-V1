@@ -18,7 +18,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import java.applet.AudioClip;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -34,8 +34,6 @@ public final class Form extends javax.swing.JFrame {
     int numIntentosMAX = 7;      //numero de intentos maximo, limitado por el número máximo de sprites de la animación.
     boolean pistaSelect = false;   //boolean utilizado para que el jugador solamente pueda presionar el botón de pista una vez
     String[] pista;              //arreglo de String que respresenta una pista adicional al jugador
-    private AudioClip sonidoCorrecto;
-    private AudioClip sonidoIncorrecto;
 
     public Form() {
         initComponents();
@@ -74,8 +72,7 @@ public final class Form extends javax.swing.JFrame {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-        sonidoCorrecto = java.applet.Applet.newAudioClip(getClass().getResource("/Sonidos/ClickExcelente.wav"));
-        sonidoIncorrecto = java.applet.Applet.newAudioClip(getClass().getResource("/Sonidos/ClickError.wav"));
+
     }
 
     /**
@@ -733,7 +730,7 @@ public final class Form extends javax.swing.JFrame {
         JButton[] botonesLetras = {btnA, btnB, btnC, btnD, btnE, btnF, btnG, btnH, btnI, btnK, btnL, btnM, btnN, btnO, btnP, btnQ,
             btnR, btnS, btnT, btnU, btnW, btnX, btnY, btnZ, btnJ, btnÑ, btnV};
 
-     // Se habilitan los botones de letras al iniciar 
+        // Se habilitan los botones de letras al iniciar 
         for (JButton boton : botonesLetras) {
             boton.setEnabled(true);
             boton.setBackground(Color.decode("#e0e1dd"));
@@ -752,33 +749,28 @@ public final class Form extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnIniciarActionPerformed
 
-    
-     /**
+    /**
      * <h2>Este método regresa a la jugada anterior de la partida</h2>
-     * Se desapila un elemento de la pila para así regresar a la acción actual y se disminute el número de intentos fallidos.
+     * Se desapila un elemento de la pila para así regresar a la acción actual y
+     * se disminute el número de intentos fallidos.
      *
      * No retorna nada.
      *
-     */ 
+     */
     private void btnRetrocederActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRetrocederActionPerformed
 
-        if (juego != null) 
-        {   //si la jugada actual es igual a la palabra a adivinar significa que el jugador ya ganó, entonces no podrá retroceder
-            if (Arrays.equals(juego.palabraAux, juego.letras)) 
-            {
+        if (juego != null) {   //si la jugada actual es igual a la palabra a adivinar significa que el jugador ya ganó, entonces no podrá retroceder
+            if (Arrays.equals(juego.palabraAux, juego.letras)) {
                 JOptionPane.showMessageDialog(null, "No se puede retroceder, ya ganaste...", "Error", JOptionPane.ERROR_MESSAGE);
-            } 
-            else 
-            {   //si el número de intentos fallidos llegó a su máximo significa que el jugador ya perdió y no podrá retroceder.
+            } else {   //si el número de intentos fallidos llegó a su máximo significa que el jugador ya perdió y no podrá retroceder.
                 if (juego.intentoActual == numIntentosMAX) {
                     JOptionPane.showMessageDialog(null, "No se puede retroceder, ya perdiste...", "Error", JOptionPane.ERROR_MESSAGE);
                 } else {
                     if (juego.intentoActual > 0) {   //se controla que el número de intento actual sea mayor a cero para evitar errores
 
-                    /* si el tamaño de la pila es mayor a uno significa que se ha realizado más de una jugada, entonces se retrocederá 
+                        /* si el tamaño de la pila es mayor a uno significa que se ha realizado más de una jugada, entonces se retrocederá 
                        a la jugada anterior almacenada en la pila */
-                    
-                        if (juego.pila.Size() > 1) {  
+                        if (juego.pila.Size() > 1) {
                             juego.pila.Desapilar();                                     //se retrocede de jugada al desapilar un elemento de la pila
                             juego.letras = ((String[]) juego.pila.Peek()).clone();      //la jugada actual se actualiza al último elemento de la pila
                             txtArea.setText(juego.Palabra());                       //se actualiza el txtArea que contiene la palabra
@@ -794,9 +786,9 @@ public final class Form extends javax.swing.JFrame {
                     }
                 }
             }
-        }
-        else
+        } else {
             JOptionPane.showMessageDialog(null, "Ni siquiera ha empezado el juego...", "Error", JOptionPane.ERROR_MESSAGE);
+        }
 
 
     }//GEN-LAST:event_btnRetrocederActionPerformed
@@ -819,7 +811,7 @@ public final class Form extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnXActionPerformed
 
-    
+
     private void btnPistaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPistaActionPerformed
 
         if (juego != null) {
@@ -827,16 +819,16 @@ public final class Form extends javax.swing.JFrame {
             if (!pistaSelect) {       //si la ayuda de pista no ha sido seleccionada antes...
 
                 if (!juego.pila.Llena()) {  //si la pila está llena significa que el juego ya se ha terminado, entonces no se ejecuta la pista..
-                                            
+
                     do {                    //se ejecuta el método de pista mientras la pista generada no sea igual a la jugada actual
                         Pista();
-                    } while (Arrays.equals(pista, juego.letras));  
+                    } while (Arrays.equals(pista, juego.letras));
                     //se termina el ciclo cuando la pista generada contiene una letra diferente a la jugada actual
 
                     lblPista.setVisible(true);
                     lblPista.setText(juego.Palabra(pista));
                     pistaSelect = true;         //se marca la pista como seleccionada para que así no se vuelva a usar más veces
-                } 
+                }
 
             }
         }
@@ -844,26 +836,23 @@ public final class Form extends javax.swing.JFrame {
 
     private void btnAMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAMouseClicked
         // TODO add your handling code here:
-        AudioClip sonido;
-        sonido = java.applet.Applet.newAudioClip(getClass().getResource("/Sonidos/ClickExcelente.wav"));
-        sonido.play();
+
 
     }//GEN-LAST:event_btnAMouseClicked
 
-    
-    
     /**
      * <h2>Este método resetea el estado del juego al inicio</h2>
-     * Se vacía la pila hasta la acción inicial en donde solo hay una letra y se resetea la animación.
+     * Se vacía la pila hasta la acción inicial en donde solo hay una letra y se
+     * resetea la animación.
      *
      * No retorna nada.
      *
-     */   
+     */
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
-      
+
         if (juego != null) {
-            
-            while (juego.pila.Size()> 1) {         //ciclo para vaciar la pila hasta que llegue al primer elemento en donde está la jugada inicial
+
+            while (juego.pila.Size() > 1) {         //ciclo para vaciar la pila hasta que llegue al primer elemento en donde está la jugada inicial
                 juego.pila.Desapilar();
             }
             juego.letras = ((String[]) juego.pila.Peek()).clone();     //el arreglo de letras se actualiza al primer elemento de la pila
@@ -872,25 +861,25 @@ public final class Form extends javax.swing.JFrame {
             ahorcado.setIcon(icono);
             txtArea.setText(juego.Palabra());                      //se actualiza el txtArea que contiene la palabra
             lblPista.setVisible(false);                           //se ocultan los label de pista y ayuda
-            pistaSelect = false;                                       
+            pistaSelect = false;
             lblAyuda.setVisible(false);
-        }
-        else
+        } else {
             JOptionPane.showMessageDialog(null, "Ni siquiera ha empezado el juego...", "Error", JOptionPane.ERROR_MESSAGE);
-            
+        }
+
 
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
-    
     /**
      * <h2>Este método proporciona una pista al jugador</h2>
-     * Se añade una letra al estado actual del juego para así dar una pequeña ayuda al jugador.
-     * Se obtiene una letra aleatoria de la palabra a adivinar, se comprueba que dicha letra no esté ya almacenada en la jugada actual
-     * y se añade esa letra nueva al arreglo del pista el cual se imprime en un label. El método es auxiliar y no afecta como tal al 
-     * estado del juego.
-     * No retorna nada.
+     * Se añade una letra al estado actual del juego para así dar una pequeña
+     * ayuda al jugador. Se obtiene una letra aleatoria de la palabra a
+     * adivinar, se comprueba que dicha letra no esté ya almacenada en la jugada
+     * actual y se añade esa letra nueva al arreglo del pista el cual se imprime
+     * en un label. El método es auxiliar y no afecta como tal al estado del
+     * juego. No retorna nada.
      *
-     */  
+     */
     public void Pista() {
         Random random = new Random();                          //se utiliza el paquete random de Java para generar un número aleatorio después
         pista = ((String[]) juego.pila.Peek()).clone();        //se almacena en el arreglo de pista la última jugada
@@ -899,15 +888,14 @@ public final class Form extends javax.swing.JFrame {
         int j = 0;                                              //contador para recorrer el arreglo de pista
         while (j <= pista.length) {                             //se realiza un ciclo mientras j sea menor a la longitud del arreglo de pista
             indiceAleatorio = random.nextInt(pista.length);  //se genera un numero aleatorio en el rango de la longitud del arreglo de pista 
-            
-            if (pista[j] != null && pista[j].equals(juego.palabraAux[indiceAleatorio]))  //se comprueba que la posicion actual no sea luna y que la letra
+
+            if (pista[j] != null && pista[j].equals(juego.palabraAux[indiceAleatorio])) //se comprueba que la posicion actual no sea luna y que la letra
             {                                                                            // aleatorio a adivinar no esté ya almacenada en la jugada actual
                 j++;                                                                     //si la letra de ayuda está repetida se pasa a la siguiente posición del arreglo
-            } 
-            else                                                              //si la letra de ayuda no se encuentra en la jugada....
+            } else //si la letra de ayuda no se encuentra en la jugada....
             {
                 pista[indiceAleatorio] = juego.palabraAux[indiceAleatorio];   //se asigna dicha letra aleatoria en su posición correspondiente en el arreglo de pista
-                break;                               
+                break;
             }
         }
     }
@@ -962,7 +950,8 @@ public final class Form extends javax.swing.JFrame {
      *
      *
      * @param letra Letra que representa el intento del jugador
-     * @param btn   Boton correspondiente a la letra que se desea intentar adivinar
+     * @param btn Boton correspondiente a la letra que se desea intentar
+     * adivinar
      */
     public void Intento(String letra, JButton btn) {
 
@@ -979,12 +968,12 @@ public final class Form extends javax.swing.JFrame {
 
             juego.intentoActual++;
             if (juego.intentoActual == numIntentosMAX) {
-                sonidoIncorrecto.play();
+
                 JOptionPane.showMessageDialog(null, "Perdiste! La palabra era: " + juego.StringArray(juego.palabraAux), "Fin", JOptionPane.ERROR_MESSAGE);
                 DeshabilitarBotones();
 
             } else {
-                sonidoIncorrecto.play();
+
                 icono = new ImageIcon(sprites[juego.intentoActual]);
                 ahorcado.setIcon(icono);
 
@@ -993,11 +982,10 @@ public final class Form extends javax.swing.JFrame {
 
             btn.setBackground(Color.decode("#415a77"));                 //se pinta el botón recibido en el parámetro de verde
             if (Arrays.equals(juego.palabraAux, juego.letras)) { //si el arreglo de la palabra a adivinar es igual al arreglo del estado del juego
-                sonidoCorrecto.play();
+
                 //se muestra un mensaje de éxito
                 JOptionPane.showMessageDialog(null, "Ganaste!", "Felicidades", JOptionPane.INFORMATION_MESSAGE);
                 DeshabilitarBotones();                                 //se vacian los botones para que el jugador no pueda hacer más acciones
-          
 
             }
         }
@@ -1011,20 +999,19 @@ public final class Form extends javax.swing.JFrame {
         System.out.println("Pila: " + juego.PrintPila());
 
     }
-    
+
     /**
      * <h2>Este método deshabilita todos los botones</h2>
-     * Método utilizado al momento de que el jugador falle o gane la partida y así evitar errores.
-     * También se utiliza al cargar el formulario.
-     * 
+     * Método utilizado al momento de que el jugador falle o gane la partida y
+     * así evitar errores. También se utiliza al cargar el formulario.
+     *
      * No retorna nada.
      *
-     */  
+     */
     public void DeshabilitarBotones() {
         JButton[] botonesLetras = {btnA, btnB, btnC, btnD, btnE, btnF, btnG, btnH, btnI, btnK, btnL, btnM,
             btnN, btnO, btnP, btnQ, btnR, btnS, btnT, btnU, btnW, btnX, btnY, btnZ,
             btnJ, btnÑ, btnV};                                   //arreglo que contiene todos los botones representativos al alfabeto
-
 
         for (JButton boton : botonesLetras) {
             boton.setEnabled(false);                  //se deshabilita cada botón
